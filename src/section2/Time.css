@@ -1,0 +1,169 @@
+.time-section {
+  width: 100%;
+  padding: 80px 80px;
+  background: #FFFFFF;
+}
+
+.time-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(30px, 4vw, 80px);
+}
+
+/* LEFT SIDE */
+
+
+.time-image {
+  flex: 1;
+  max-width: 576px;
+  min-width: 0;
+}
+
+.time-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 576 / 520;
+  object-fit: cover;
+  display: block;
+  border-radius: 28px;
+}
+
+/* RIGHT SIDE */
+
+.time-content {
+  flex: 1;
+  max-width: 560px;
+}
+
+.time-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #2563eb;
+  margin-bottom: 16px;
+}
+
+.time-content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.time-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color:#475569;
+  margin-bottom: 24px;
+}
+
+/* CARDS */
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.benefit-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0px 1px 3px 0px #00000012;
+  padding: 29px;
+  width: 100%;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefit-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.icon-1 {
+  background: #d1fae5;
+}
+
+.icon-2 {
+  background: #dbeafe;
+}
+
+.icon-3 {
+  background: #fef3c7;
+}
+
+.icon-4 {
+  background: #fce7f3;
+}
+
+.benefit-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.benefit-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color:#1E293B;
+  line-height: 1.5;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+  .time-container {
+    flex-direction: column;
+  }
+
+  .time-content,
+  .time-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .time-section {
+    padding: 60px 20px;
+  }
+
+  .time-content h2 {
+    font-size: 40px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Local Container Styles */
+.time-local-container {
+	max-width: 1280px;
+	width: calc(100vw - 160px);
+	
+	margin-right: auto;
+	box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+	.time-local-container {
+		width: calc(100vw - 48px);
+		margin-left: 24px;
+	}
+}
+
+@media (max-width: 480px) {
+	.time-local-container {
+		width: calc(100vw - 32px);
+		margin-left: 16px;
+	}
+}

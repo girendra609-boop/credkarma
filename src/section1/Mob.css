@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+.volunteerr-section {
+  
+  padding: 100px 80px;
+    
+  display: flex;
+  align-items: center;
+  gap: 80px;
+background-color: #F8FAFC;
+  font-family: "DM Sans", sans-serif;
+}
+
+
+
+.volunteerr-image img {
+  
+  width: 576px;height: 500px;
+  border-radius: 28px;
+  display: block;
+  object-fit: cover;
+}
+
+.volunteer-content {
+  flex: 1;
+  max-width: 520px;
+}
+
+.volunteerr-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #2563EB;
+  margin-bottom: 16px;
+}
+
+.volunteer-content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0F172A;
+  margin-bottom: 16px;
+}
+
+.volunteer-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color:#475569;
+  margin-bottom: 30px;
+}
+
+.volunteer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.volunteer-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.cheeck-icon {
+  color: #10B981;padding: -20px;
+  
+  font-size: 18px;font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+  .volunteer-section {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .volunteer-content {
+    max-width: 100%;
+  }
+
+  .volunteer-content h2 {
+    font-size: 38px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .volunteer-section {
+    padding: 0 20px;
+    margin: 70px auto;
+  }
+
+  .volunteer-content h2 {
+    font-size: 30px;
+  }
+
+  .volunteer-content p {
+    font-size: 14px;
+  }
+
+  .volunteer-list li {
+    font-size: 14px;
+  }
+}

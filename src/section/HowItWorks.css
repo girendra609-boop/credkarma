@@ -1,0 +1,324 @@
+/* ===========================
+   SECTION
+=========================== */
+
+.hiw-section {
+  background-color: #F7F9FC;
+  width: 100%;
+  padding: 80px 0;
+  font-family: "DM Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+.hiw-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.hiw-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.44px;
+  color: #1A56DB;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+
+.hiw-heading {
+  font-size: 36px;
+  font-weight: 800;
+  color: #0A1628;
+  text-align: center;
+  line-height: 42px;
+  margin: 0;
+}
+
+.hiw-subheading {
+  max-width: 508px;
+  font-size: 17px;
+  color: #475569;
+  text-align: center;
+  line-height: 28px;
+  margin: 16px 0 40px;
+}
+
+/* ===========================
+   CARD GRID
+=========================== */
+
+.hiw-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.hiw-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0px 4px 16px 0px #0A162814;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.hiw-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(15, 26, 46, 0.12);
+}
+
+/* ===========================
+   CARD IMAGE
+=========================== */
+
+.hiw-card-img-wrap {
+  overflow: hidden;
+}
+
+.hiw-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.35s ease;
+}
+
+.hiw-card:hover .hiw-card-img {
+  transform: scale(1.04);
+}
+
+/* ===========================
+   CARD BODY
+=========================== */
+
+.hiw-card-body {
+  padding: 23px 25px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  flex: 1;
+}
+
+/* ===========================
+   TITLE ROW
+=========================== */
+
+.hiw-card-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.hiw-badge {
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #1A56DB 0%,
+    #06B6D4 100%
+  );
+
+  box-shadow: 0px 4px 12px 0px #1A56DB59;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0A1628;
+  line-height: 23px;
+  margin: 0;
+}
+
+/* ===========================
+   LIST
+=========================== */
+
+.hiw-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hiw-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 20px;
+}
+
+.hiw-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1A56DB;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   CTA BUTTON
+=========================== */
+
+.hiw-cta-wrap {
+  margin-top: 50px;
+}
+
+.hiw-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px 28px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #1A56DB 0%,
+    #06B6D4 100%
+  );
+
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0px 8px 20px rgba(26, 86, 219, 0.3);
+
+  transition: all 0.3s ease;
+}
+
+.hiw-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 25px rgba(26, 86, 219, 0.35);
+}
+
+.hiw-cta-arrow {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw-cta-arrow img {
+  width: 12px;
+  height: 12px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1024px) {
+  .hiw-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hiw-section {
+    padding: 60px 0;
+  }
+
+  .hiw-heading {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .hiw-subheading {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .hiw-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hiw-card-img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hiw-heading {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .hiw-subheading {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .hiw-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Local Container Styles */
+.hiw-local-container {
+	max-width: 1280px;
+	width: calc(100% - 160px);
+	margin-left: max(80px, calc((100% - 1280px) / 2));
+	margin-right: auto;
+	box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+	.hiw-local-container {
+		width: calc(100% - 48px);
+		margin-left: 24px;
+	}
+}
+
+@media (max-width: 480px) {
+	.hiw-local-container {
+		width: calc(100% - 32px);
+		margin-left: 16px;
+	}
+}

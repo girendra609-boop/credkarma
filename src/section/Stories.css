@@ -1,0 +1,118 @@
+.stories {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.stories h5 {
+  color: #2563eb;font-size: 12px;font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+  margin-bottom: 15px;
+}
+
+.stories h2 {
+  font-size: 36px; font-family: "DM Sans",sans-serif;font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 410px));
+  gap: 18px;
+  justify-content: space-between;
+}
+.story-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 410px;
+  height: 390px;
+
+box-shadow: 0px 1px 2px 0px #0000000A;
+
+box-shadow: 0px 1px 3px 0px #00000014;
+
+
+
+  display: flex;
+  flex-direction: column;
+}
+
+.story-image {
+  width: 100%;
+  max-width: 410px;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.story-body {
+  padding: 18px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.story-tag {
+  color: #2563eb;
+  font-size: 12px;font-family: "DM Sans", sans-serif;
+  letter-spacing: 1px;
+}
+
+.story-body h4,
+.story-card h4 {
+  margin: 0;
+  font-size: 18px;font-family: "DM Sans",sans-serif;
+  color: #0f172a;
+}
+
+.story-pills {
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 10px;font-family: "DM Sans",sans-serif;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 12px;
+}
+
+@media (max-width: 1100px) {
+  .story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Local Container Styles */
+.stories-local-container {
+	max-width: 1280px;
+	width: calc(100% - 160px);
+	margin-left: max(80px, calc((100% - 1280px) / 2));
+	margin-right: auto;
+	box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+	.stories-local-container {
+		width: calc(100% - 48px);
+		margin-left: 24px;
+	}
+}
+
+@media (max-width: 480px) {
+	.stories-local-container {
+		width: calc(100% - 32px);
+		margin-left: 16px;
+	}
+}

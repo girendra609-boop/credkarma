@@ -1,0 +1,109 @@
+/* CorporatePartnerships.css */
+
+.cp-section {
+  background-color:#F8FAFC;
+  padding: 80px 80px !important;
+  text-align: center;
+  font-family:  "DM Sans", sans-serif;
+  
+  
+}
+
+.cp-inner {
+
+  text-align: center;
+}
+
+/* Eyebrow label */
+.cp-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;font-family: "DM Sans,sans-serif";
+  color: #2563EB;
+  margin: 0 0 16px;
+}
+
+/* Section heading */
+.cp-heading {
+  font-size: 36px;font-weight: 800;
+  font-family: "DM Sans,sans-serif";
+  color: #0F172A;
+  margin: 0 0 40px;
+  line-height: 1.25;
+}
+
+/* Grid container */
+.cp-grid {
+  border: 1px solid #dde2ec;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* Each row of logos */
+.cp-row {
+  display: flex;
+  border-bottom: 1px solid #dde2ec;
+}
+
+.cp-row:last-child {
+  border-bottom: none;
+}
+
+/* Individual logo cell */
+.cp-cell {
+  flex: 1;
+  display: flex;
+  align-items: center;width: 254px;height: 92px;
+  justify-content: center;
+  padding: 28px 20px;
+  border-right: 1px solid #dde2ec;
+  transition: background-color 0.18s ease;
+}
+
+.cp-cell:last-child {
+  border-right: none;
+}
+
+.cp-cell:hover {
+  background-color: #f0f4fb;
+}
+
+/* Logo image */
+.cp-logo {
+  max-width: 110px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(20%);
+  opacity: 0.85;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+
+.cp-cell:hover .cp-logo {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Responsive: stack to 2 columns on small screens */
+@media (max-width: 600px) {
+  .cp-row {
+    flex-wrap: wrap;
+  }
+
+  .cp-cell {
+    flex: 0 0 50%;
+    border-right: none;
+    border-bottom: 1px solid #dde2ec;
+  }
+
+  .cp-cell:nth-child(odd) {
+    border-right: 1px solid #dde2ec;
+  }
+
+  .cp-cell:last-child {
+    border-bottom: none;
+  }
+}

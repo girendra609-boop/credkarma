@@ -1,0 +1,344 @@
+/* ─── CommunitiesNGO.css ─────────────────────────────────────────────────── */
+
+/* Tokens */
+.cng-section {
+  --cng-bg: #f0f4fb;
+  --cng-surface: #ffffff;
+  --cng-border: #e2e8f0;
+  --cng-eyebrow: #4a90d9;
+  --cng-headline: #0f1c2e;
+  --cng-subheading: #1a2d44;
+  --cng-body: #4a5568;
+  --cng-muted: #8096b0;
+  --cng-primary: #2563eb;
+  --cng-primary-hover: #1d4ed8;
+  --cng-radius-card: 14px;
+  --cng-radius-btn: 28px;
+  --cng-radius-item: 10px;
+  --cng-shadow: 0 2px 12px rgba(15, 28, 46, 0.07);
+  --cng-shadow-card: 0 4px 20px rgba(15, 28, 46, 0.10);
+  --font-display: "DM Sans",sans-serif;
+}
+
+/* Section wrapper */
+.cng-section {
+  background: #F7F9FC;
+  width: 100%;
+  padding: 80px 0px;
+  font-family: var(--font-display);
+  box-sizing: border-box;
+}
+
+.cng-container {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: flex-start;
+}
+
+/* Grid for right column */
+.cng-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-self: flex-start;
+}
+
+/* ─── LEFT COLUMN ───
+───────────────────────────────────────────────────────── */
+
+.cng-left {
+  flex: 0 1 500px;
+  min-width: 0;
+}
+
+.cng-right {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.cng-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1A56DB;
+  margin-bottom: 16px;
+}
+
+.cng-headline {
+  font-size: 27px;
+  font-weight: 800;
+  width: 100%;
+  max-width: 500px;
+  line-height: 42px;
+  color: #0A1628;
+  margin: 0 0 24px 0;
+  vertical-align: middle;
+}
+
+.cng-subheading {
+  font-size: 25px;
+  font-weight: 800;
+  color: #475569;
+  margin: 0 0 12px 0;
+}
+
+/* Value proposition list */
+.cng-value-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cng-value-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: var(--cng-surface);
+  border: 1px solid var(--cng-border);
+  border-radius: var(--cng-radius-item);
+  padding: 12px 16px;
+  box-shadow: var(--cng-shadow);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.cng-value-item:hover {
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.12);
+  transform: translateX(3px);
+}
+
+.cng-value-icon {
+  width: 32px;
+  height: 32px;
+  background: #eff6ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--cng-primary);
+  flex-shrink: 0;
+}
+
+.cng-value-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0A1628;
+}
+
+/* CTA buttons */
+.cng-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cng-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: var(--cng-radius-btn);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.cng-btn:active {
+  transform: scale(0.97);
+}
+
+.cng-btn--primary {
+  background: var(--cng-primary);
+  color: #fff;font-family: "DM Sans",sans-serif;
+  border: 2px solid var(--cng-primary);
+}
+
+.cng-btn--primary:hover {
+  background: var(--cng-primary-hover);
+  border-color: var(--cng-primary-hover);
+}
+
+.cng-btn--outline {
+  background: transparent;font-family: "DM Sans",sans-serif;
+  color: var(--cng-headline);
+  border: 2px solid var(--cng-border);
+}
+
+.cng-btn--outline:hover {
+  border-color: var(--cng-primary);
+  color: var(--cng-primary);
+}
+
+.cng-feedback {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--cng-body);
+}
+
+/* ─── RIGHT COLUMN ─────────────────────────────────────────────────────────── */
+
+
+
+/* Card */
+.cng-card {
+  background: var(--cng-surface);
+  border-radius: var(--cng-radius-card);
+  overflow: hidden;
+  width: 100%;
+  min-height: 215px;
+  box-shadow: var(--cng-shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cng-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(15, 28, 46, 0.14);
+}
+
+.cng-card-img-wrap {
+  position: relative;
+  height: 148px;
+  overflow: hidden;
+}
+
+.cng-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cng-card-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--cng-primary);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.cng-card-body {
+  padding: 10px 12px 12px;
+}
+
+.cng-card-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0A1628;
+  margin: 0 0 7px 0;
+}
+
+.cng-card-stat {
+  font-size: 11.5px;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.4;
+}
+.cng-value-star {
+  width: 18px;
+  height: 18px;
+}
+
+.cng-value-icon img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .cng-container {
+    gap: 32px;
+  }
+
+  .cng-headline {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 860px) {
+  .cng-container {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .cng-left {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cng-section {
+    padding: 36px 0;
+  }
+
+  .cng-headline {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+  
+
+  .cng-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cng-btn {
+    width: 100%;height: 50px;
+  
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cng-value-item,
+  .cng-card,
+  .cng-btn {
+    transition: none;
+  }
+}
+
+/* Local Container Styles */
+.community-local-container {
+	max-width: 1280px;
+	width: calc(100% - 160px);
+	margin-left: max(80px, calc((100% - 1280px) / 2));
+	margin-right: auto;
+	box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+	.community-local-container {
+		width: calc(100% - 48px);
+		margin-left: 24px;
+	}
+}
+
+@media (max-width: 480px) {
+	.community-local-container {
+		width: calc(100% - 32px);
+		margin-left: 16px;
+	}
+}
