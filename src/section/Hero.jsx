@@ -17,7 +17,7 @@ const Hero = () => {
         </span>
 
         <h1 className="hero__headline">
-          Transforming
+          Transforming ....
           <br />
           Community Needs
           <br />
