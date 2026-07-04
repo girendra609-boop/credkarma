@@ -1,17 +1,21 @@
 .simple-process {
   max-width: 1280px;
-  margin: 80px 80px;
-
+  width: 100%;
+  /* margin: 0 auto centers the block; symmetric padding avoids scrollbar-driven shifts */
+  margin: 80px auto;
+  /* padding: 0 clamp(20px, 4vw, 80px); */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: auto;
-  
+  /* clamp gap so it scales with viewport instead of jumping */
+  gap: clamp(40px, 6vw, 80px);
+  box-sizing: border-box;
 }
 
 /* LEFT */
 .simple-process__left {
-  flex: 0 0 48%;
+  flex: 1;
+  min-width: 0;
 }
 
 .simple-process__eyebrow {
@@ -30,7 +34,6 @@
   font-weight: 800;
   line-height: 1.2;
   color: #1e293b;
-  width:553px;
   margin-bottom: 16px;
 }
 
@@ -39,49 +42,66 @@
   font-size: 14px;
   color: #64748b;
   line-height: 1.6;
-  max-width: 430px;
+  max-width: 530px;
   margin-bottom: 42px;
 }
 
 /* STEPS */
 .simple-process__steps {
-  width: 468px;margin-left: 30px;
+  width: 100%;
+  max-width: 580px;
   display: flex;
   justify-content: space-between;
   position: relative;
 }
 
-.simple-process__connector {
-  position: absolute;
-  top: 20px;
-  left: 45px;
-  right: 45px;
-  height: 2px;
-  background: #5b7bff;
-  z-index: 0;
-}
-
 .simple-process__step {
+  flex: 1;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  width: 120px;
+}
+
+/* Connecting line strictly between circles */
+.simple-process__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: calc(50% + 21px);
+  width: calc(100% - 42px);
+  height: 2px;
+  background: #3b82f6;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
 .simple-process__circle {
+  position: relative;
   width: 48px;
   height: 48px;
   margin: 0 auto 14px;
   border-radius: 50%;
-  background: #082b74;
+  background: #0b205d;
   color: #fff;
   font-size: 14px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 4px solid #f8f8f8;
-  box-shadow: 0 0 0 3px rgba(91, 123, 255, 0.18);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 4px #e2ebff;
+  z-index: 2;
+}
+
+.simple-process__step-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .simple-process__step-title {
@@ -90,53 +110,312 @@
   font-weight: 700;
   color: #1e293b;
   margin-bottom: 4px;
+  text-align: center;
 }
 
 .simple-process__step-desc {
   font-family: "DM Sans", sans-serif;
-  font-size: 13px;padding-left: 3px;
-  line-height: 19.5px;width: 176px;margin-left: -25px;
+  font-size: 13px;
+  line-height: 1.5;
   color: #64748B;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
 }
 
 /* RIGHT */
 .simple-process__right {
-  flex: 0 0 52%;
+  flex: 1;
+  min-width: 0;
   display: flex;
   justify-content: flex-end;
 }
 
 .simple-process__image {
-  
-  width: 576px;
-  height: 480px;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 22px;
   display: block;
 }
 
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .simple-process {
+    /* Match Navbar: width: calc(100% - 80px) = 40px each side */
+    max-width: 1280px;
+    width: calc(100% - 80px);
+    margin: 80px auto;
+    padding: 0;
+    gap: clamp(40px, 5vw, 80px);
+  }
+
+  /* .simple-process__left {
+    
+    flex: 0 0 48%;
+  }
+
+  .simple-process__right {
+    
+    flex: 0 0 48%;
+  } */
+
+  .simple-process__heading {
+    /* Replace fixed 553px width with % to prevent horizontal overflow */
+    width: 100%;
+    /* Use rem for font-size */
+    font-size: 2.25rem; /* 36px */
+  }
+
+  .simple-process__subtext {
+    /* Remove fixed 530px max-width to allow fluid wrapping */
+    max-width: 100%;
+    /* Use rem for font size */
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .simple-process__steps {
+    /* Replace fixed 580px max-width with % */
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .simple-process__step-title {
+    /* Use rem for font-size */
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  .simple-process__step-desc {
+    /* Allow description to stretch up to 100% of the step container */
+    max-width: 100%;
+    /* Use rem for font-size */
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  .simple-process__circle {
+    /* Use rem for margin, border, box-shadow */
+    margin: 0 auto 0.875rem;
+    border-width: 0.1875rem;
+    box-shadow: 0 0 0 0.25rem #e2ebff;
+    /* Optional: can keep width/height fixed or rem, using rem here */
+    width: 3rem;
+    height: 3rem;
+    font-size: 0.875rem;
+  }
+
+  .simple-process__image {
+    /* Remove fixed 576px width to prevent right-side overflow */
+    width: 100%;
+    /* Remove fixed 480px height to prevent aspect ratio distortion */
+    height: auto;
+    /* Use rem for border-radius */
+    border-radius: 1.375rem; /* 22px */
+  }
+}
+
+/* =========================================================
+   Tablet Specific Overrides (768px - 1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* 
+   * Reason for fix: Rule 8 requires preventing horizontal scrolling.
+   */
+  body {
+    overflow-x: hidden;
+  }
+
+  .simple-process {
+    margin: 80px 24px;
+  }
+
+
+  .simple-process__heading {
+    width: 100%;
+    font-size: 28px;
+  }
+
+  /* 
+   * Reason for fix: The subtext also needs to shrink flexibly to avoid bounds overflow.
+   */
+  .simple-process__subtext {
+    max-width: 100%;
+  }
+
+  /* 
+   * Reason for fix: The steps container has a hardcoded 468px width causing it to spill out.
+   * Setting it to 100% keeps it contained, and removing margin-left centers it.
+   */
+  .simple-process__steps {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* 
+   * Reason for fix: The step descriptions have a fixed width of 176px and a negative 
+   * margin. In a narrow tablet column, they violently overlap each other. 
+   * Setting step wrapper to 33% and desc to 100% allows them to sit safely side-by-side.
+   */
+  .simple-process__step {
+    width: 33%;
+  }
+
+  .simple-process__step-desc {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 11.5px;
+  }
+
+  /* 
+   * Reason for fix: The image has a hardcoded width of 576px, which completely breaks 
+   * out of the right column. Making it 95% width makes it responsive while naturally 
+   * leaving a 5% gap between the left and right columns.
+   */
+  .simple-process__image {
+    width: 95%;
+    height: auto;
+  }
+}
+
 /* MOBILE */
-@media (max-width: 768px) {
+
+@media (max-width: 435px) {
   .simple-process {
     flex-direction: column;
-    padding: 30px 20px;
+    padding: 10px 0;
+    margin: 20px 16px;
+    width: auto;
+    gap: 30px;
+  }
+  
+  .simple-process__heading {
+    font-size: 24px;
+    width: 100%;
+  }
+
+  .simple-process__subtext {
+    width: 100%;
+  }
+    
+  .simple-process__steps {
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    padding-left: 10px;
+  }
+
+  .simple-process__step:not(:last-child)::after {
+    width: 2px;
+    height: calc(100% - 16px);
+    left: 23px;
+    top: 48px;
+    background: #3b82f6;
+    transform: none;
+  }
+
+  .simple-process__step {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .simple-process__circle {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .simple-process__step-text {
+    display: flex;
+    flex-direction: column;margin-left: -5.2rem;margin-top: -5px;
+    gap: 4px;
+    padding-top: 4px; /* Align text visually with the center of the circle */
+  }
+
+  .simple-process__step-title {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .simple-process__step-desc {
+    font-size: 13px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .simple-process__image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+}
+
+
+/* =========================================================
+   Big Screen (1220px – 1440px)
+   ========================================================= */
+@media (min-width: 1220px) and (max-width: 1440px) {
+  .simple-process {
+    max-width: 1280px;
+    width: 100%;
+    margin: 90px auto;
+    /* padding is already handled by the base clamp() rule — no override needed */
+    gap: clamp(40px, 6vw, 90px);
+    align-items: center;
   }
 
   .simple-process__left,
   .simple-process__right {
     flex: 1;
-    width: 100%;
-  }
-
-  .simple-process__steps {
-    width: 100%;
-  }
-
-  .simple-process__image {
-    height: 240px;
+    min-width: 0;
   }
 
   .simple-process__heading {
-    font-size: 26px;
+    font-size: 40px;
+    line-height: 1.2;
+    max-width: 550px;
+  }
+
+  .simple-process__subtext {
+    max-width: 530px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .simple-process__steps {
+    max-width: 580px;
+    width: 100%;
+  }
+
+  .simple-process__step-title {
+    font-size: 14px;
+  }
+
+  .simple-process__step-desc {
+    max-width: 160px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .simple-process__image {
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    border-radius: 22px;
+    display: block;
   }
 }

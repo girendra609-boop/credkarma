@@ -1,6 +1,6 @@
 import React from "react";
 import cred1 from "../assets/cred1.png";
-import cred2 from "../assets/cred2.png";
+import cred2 from "../assets/creed2.png";
 import cred3 from "../assets/cred3.png";
 import cred4 from "../assets/cred4.png";
 import arrow from "../assets/arrow.png";

@@ -70,10 +70,10 @@ function Footer() {
           © 2026 CredKarma. All Rights Reserved.
         </p>
 
-        <div style={{fontFamily:"DM Sans"}}>
-          <span>Privacy Policy</span> |{" "}
-          <span>Terms of Use</span> |{" "}
-          <span>PDPA Compliance</span>
+        <div  className="footer-bottom-links">
+          <span>Privacy Policy</span> &nbsp;
+          <span>Terms of Use</span>&nbsp;
+          <span>FCRA Compliance</span>
         </div>
 
       </div>

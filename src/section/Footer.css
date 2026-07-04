@@ -23,6 +23,10 @@
   margin-bottom: 20px;font-family: "DM Sans",sans-serif;
   color: #FFFFFF;
 }
+.footer-bottom-links  {
+  margin-bottom: 20px;font-family: "DM Sans",sans-serif;
+  display:flex!important;gap:0.2rem!important;
+}
 
 .footer-links ul {
   list-style: none;
@@ -46,4 +50,43 @@ color:#FFFFFF80;
 
 .footer-bottom p {
   color: #94a3b8;font-family: "DM Sans",sans-serif;
+}
+ @media (max-width: 480px) {
+  
+    .footer {
+      padding: 20px 30px;
+  }
+    .footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr ;
+  gap: 40px;
+}
+.footer-bottom-links
+{
+gap: 8px;
+}
+  
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer {
+    padding: 4rem 2rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 3.5fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-brand h3,
+  .footer-links h4 {
+    margin-bottom: 1rem;
+  }
+
+  .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    gap: 1rem;
+  }
 }

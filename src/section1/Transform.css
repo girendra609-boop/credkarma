@@ -1,31 +1,146 @@
-.transform-img{
-    width: 416px;
-    height: 380px;
+.transform-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 416 / 380;
     object-fit: cover;
+    border-radius: 16px; /* Adds a nice touch for images if they aren't already */
 }
 
-.transform-grid{
+.transform-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
-.transform-section{
-    padding: 80px 80px;
+
+.transform-section {
+    max-width: 1280px;
+    width: calc(100% - 160px);
+    margin-left: max(80px, calc((100% - 1280px) / 2));
+    margin-right: auto;
+    padding: 80px 0;
     background-color: #FFFFFF;
- 
-    font-family: "DM Sans",sans-serif;
+    font-family: "DM Sans", sans-serif;
+    box-sizing: border-box;
 }
-.transform-content{
-    text-align: center;font-size: 11px;
+
+.transform-content {
+    text-align: center;
+    font-size: 11px;
     font-weight: 700;
-    
-    color:#2563EB;
+    color: #2563EB;
     margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
-.transform-content1{
+
+.transform-content1 {
     text-align: center;
     font-size: 46px;
     font-weight: 800;
-    color:#0F172A;
+    color: #0F172A;
     margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .transform-section {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    margin-right: auto;
+    padding: 5rem 0;
+  }
+
+  .transform-content {
+    /* Convert font-size and margin to rem for responsive scaling */
+    font-size: 0.6875rem; /* 11px */
+    margin-bottom: 1rem; /* 16px */
+  }
+
+  .transform-content1 {
+    /* Scale down the massive 46px font-size to fit smaller screens without awkward wrapping, and use rem */
+    font-size: 2.5rem; /* 40px */
+    margin-bottom: 2.5rem; /* 40px */
+  }
+
+  .transform-grid {
+    /* Use rem for grid gap */
+    gap: 1rem; /* 16px */
+  }
+
+  .transform-img {
+    /* Ensure image stretches fully in its grid track */
+    width: 100%;
+    /* Use rem for border-radius */
+    border-radius: 1rem; /* 16px */
+  }
+}
+
+/* =========================================================
+   Tablet Specific Overrides (768px - 1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* 
+   * Reason for fix: Rule 8 requires preventing horizontal scrolling.
+   */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* 
+   * Reason for fix: The rigid 80px padding steals 160px of screen space, which forcefully 
+   * compresses the 3-column image grid into very small squares on portrait tablets.
+   * Reducing horizontal padding to 40px gives the grid much needed breathing room.
+   */
+  .transform-section {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: auto;
+    padding: 50px 0;
+  }
+
+  /* 
+   * Reason for fix: The massive 46px desktop font size is too large for tablet screens 
+   * and wraps awkwardly. Scaling it down ensures a beautiful, balanced header.
+   */
+  .transform-content1 {
+    font-size: 36px;
+    margin-bottom: 32px;
+  }
+
+  /* 
+   * Reason for fix: While the 3-column grid uses fractional units and won't overflow, 
+   * the gaps take away precious width. Reducing them slightly maximizes image visibility.
+   */
+  .transform-grid {
+    gap: 12px;
+  }
+}
+
+/* Small Mobile (320px - 425px) */
+@media (max-width: 435px) {
+    .transform-section {
+        width: calc(100% - 32px);
+        margin-left: 16px;
+        margin-right: auto;
+        padding: 40px 0;
+    }
+    .transform-content1 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    .transform-grid {
+        gap: 20px;
+    }
+    .transform-img {
+        aspect-ratio: 4 / 3; /* Slightly shorter on mobile so it doesn't take up the entire vertical screen */
+    }
 }

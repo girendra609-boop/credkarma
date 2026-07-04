@@ -1,5 +1,5 @@
 import "./Donation.css";
-import donation from "../assets/donattion.png";
+import donation from "../assets/ddonation.png";
 import star from "../assets/star.png";
 import certify from "../assets/certify.png";
 import zzz from "../assets/zzz.png";
@@ -12,8 +12,8 @@ const categories = [
 ];
 
 const highlights = [
-  { icon: star, label: "Transparency indicators" },
-  { icon: certify, label: "Verified campaigns" },
+  { icon: certify, label: "Transparency indicators" },
+  { icon: star, label: "Verified campaigns" },
   { icon: zzz, label: "Beneficiary stories" },
 ];
 

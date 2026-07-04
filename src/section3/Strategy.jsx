@@ -1,6 +1,7 @@
 import React from "react";
 import "./Strategy.css";
 import strategy from "../assets/strategy.png";
+import ttk from "../assets/ttk.png";
 
 const Strategy = () => {
   return (
@@ -31,22 +32,22 @@ const Strategy = () => {
 
           <div className="strategy-features">
             <div className="featuree-item">
-              <div className="strategy-check-icon">✓</div>
+              <img src={ttk} alt="check" className="strategy-check-icon" />
               <span>CSR execution support</span>
             </div>
 
             <div className="featuree-item">
-              <div className="strategy-check-icon">✓</div>
+              <img src={ttk} alt="check" className="strategy-check-icon" />
               <span>SDG mapping</span>
             </div>
 
             <div className="featuree-item">
-              <div className="strategy-check-icon">✓</div>
+              <img src={ttk} alt="check" className="strategy-check-icon" />
               <span>Employee volunteering</span>
             </div>
 
             <div className="featuree-item">
-              <div className="strategy-check-icon">✓</div>
+              <img src={ttk} alt="check" className="strategy-check-icon" />
               <span>Impact funding</span>
             </div>
           </div>

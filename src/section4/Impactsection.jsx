@@ -1,5 +1,6 @@
 import React from "react";
 import "./Impactsection.css";
+import ttk from "../assets/ttk.png";
 
 const progressData = [
   {
@@ -55,7 +56,7 @@ const Impactsection = () => {
           <div className="indicator-list">
             {indicators.map((item, index) => (
               <div className="indicator-item" key={index}>
-                <div className="impactsection-check-icon">✓</div>
+                <img src={ttk} alt="check" className="impactsection-check-icon" />
                 <span>{item}</span>
               </div>
             ))}

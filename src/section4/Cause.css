@@ -33,7 +33,9 @@
 .cause__heading {
   font-family: "DM Sans", sans-serif;
   font-size: 48px;
-  font-weight: 800;width: 770px;
+  font-weight: 800;
+  max-width: 770px;
+  width: 100%;
   color: #ffffff;
   margin: 0;
   line-height: 1.2;
@@ -52,7 +54,7 @@
   margin-top: 20px;width: 232px; height: 54px;
   padding: 12px 28px;
   background: #ffffff;
-  color: #1a3a8f;
+  color: #0A2463;
   font-family: "DM Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -80,10 +82,33 @@
 
 @media (max-width: 480px) {
   .cause {
-    padding: 40px 20px;
+    padding: 0px 20px;
   }
 
   .cause__heading {
     font-size: 24px;
+  }
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cause {
+    height: auto;
+    padding: 4rem 2rem;
+  }
+
+  .cause__heading {
+    width: auto;
+    font-size: 2.25rem;
+  }
+
+  .cause__subtext {
+    font-size: 1rem;
+  }
+
+  .cause__btn {
+    width: auto;
+    height: auto;
+    padding: 1rem 1.5rem;
   }
 }

@@ -1,14 +1,19 @@
 .time-section {
   width: 100%;
-  padding: 80px 80px;
+  padding: 80px 0;
   background: #FFFFFF;
 }
 
 .time-container {
+  max-width: 1280px;
+  width: calc(100% - 160px);
+  margin-left: max(80px, calc((100% - 1280px) / 2));
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: clamp(30px, 4vw, 80px);
+  box-sizing: border-box;
 }
 
 /* LEFT SIDE */
@@ -118,52 +123,218 @@
   line-height: 1.5;
 }
 
-/* RESPONSIVE */
 
-@media (max-width: 992px) {
-  .time-container {
-    flex-direction: column;
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
   }
 
-  .time-content,
-  .time-image {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
   .time-section {
-    padding: 60px 20px;
+    /* Vertical rhythm only — horizontal centering handled by .time-container */
+    padding: 3.5rem 0;
+  }
+
+  .time-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    margin-right: auto;
+    gap: 6%;
+  }
+
+  .time-image {
+    /* Override 576px max-width to allow fluid 2-column splitting */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .time-image img {
+    /* Ensure image scales proportionally to column */
+    width: 100%;
+    height: auto;
+    /* Maintain native aspect ratio */
+    aspect-ratio: 576 / 520;
+    /* Use rem for border radius */
+    border-radius: 1.75rem; /* 28px */
+  }
+
+  .time-content {
+    /* Override 560px max-width to share screen space */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .time-tag {
+    /* Convert font-size and margin to rem */
+    font-size: 0.8875rem; /* 11px */
+    margin-bottom: 0.4rem;
   }
 
   .time-content h2 {
-    font-size: 40px;
+    /* Scale down 36px font-size to rem to prevent overflow */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .time-description {
+    /* Convert font-size and margin to rem */
+    font-size: 0.89rem; /* 15px */
+    margin-bottom: 1.8rem;
   }
 
   .benefits-grid {
-    grid-template-columns: 1fr;
+    /* Convert 16px gap to rem */
+    gap: 1rem;
+  }
+
+  .benefit-card {
+    /* Convert padding and min-height to rem */
+    padding: 1rem; 
+    min-height: 8.75rem; /* 140px */
+    border-radius: 1rem; /* 16px */
+  }
+
+  .benefit-icon {
+    /* Convert width, height, margin, border-radius to rem */
+    width: 2.75rem; /* 44px */
+    height: 2.75rem; /* 44px */
+    margin-bottom: 1.125rem; /* 18px */
+    border-radius: 0.5rem; /* 8px */
+  }
+
+  .benefit-icon img {
+    /* Convert image sizing inside icon to rem */
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
+  }
+
+  .benefit-card h4 {
+    /* Convert font-size to rem */
+    font-size: 0.875rem; /* 14px */
   }
 }
 
-/* Local Container Styles */
-.time-local-container {
-	max-width: 1280px;
-	width: calc(100vw - 160px);
-	
-	margin-right: auto;
-	box-sizing: border-box;
+/* =========================================================
+   Tablet Specific Overrides (768px - 1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .time-section {
+    /* Explicit symmetric padding — guaranteed equal on both sides regardless of scrollbar */
+    padding: 60px 24px;
+  }
+
+  .time-container {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: auto;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .time-local-container {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .time-image, .time-content {
+    flex: 1;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .time-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .time-image img {
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 576 / 520;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .time-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-tag {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .time-content h2 {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Force heading into a single line */
+  .time-content h2 br {
+    display: none;
+  }
+
+  /* Set description width to naturally wrap to two lines */
+  .time-description {
+    text-align: center;
+    max-width: 450px;
+    /* symmetric auto margin — avoids left/right imbalance */
+    margin: 0 auto 30px;
+  }
+  
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 20px;
+  }
+
+  .benefit-card {
+    padding: 20px;
+    min-height: auto;
+  }
 }
 
-@media (max-width: 900px) {
-	.time-local-container {
-		width: calc(100vw - 48px);
-		margin-left: 24px;
-	}
-}
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 435px) {
+  .time-section {
+    padding: 3rem 1rem;
+  }
 
-@media (max-width: 480px) {
-	.time-local-container {
-		width: calc(100vw - 32px);
-		margin-left: 16px;
-	}
+  .time-container {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: auto;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .time-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .time-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .benefit-card {
+    padding: 1.25rem;
+    min-height: auto;
+  }
 }

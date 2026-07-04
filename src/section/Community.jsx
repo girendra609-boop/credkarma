@@ -11,9 +11,9 @@ import "./Community.css";
 
 const valueProps = [
   { icon: <img src={star} alt="star" className="cng-value-star" />, label: "Access to Verified Volunteers" },
-  { icon: <img src={star} alt="star" className="cng-value-star" />, label: "Faster Community Mobilization" },
-  { icon: <img src={star} alt="star" className="cng-value-star" />, label: "Transparent Execution" },
-  { icon: <img src={star} alt="star" className="cng-value-star" />, label: "Impact Visibility" },
+  { icon: <img src={plus} alt="star" className="cng-value-star" />, label: "Faster Community Mobilization" },
+  { icon: <img src={arroww} alt="star" className="" />, label: "Transparent Execution" },
+  { icon: <img src={tick} alt="star" className="cng-value-star" />, label: "Impact Visibility" },
 ];
 
 const impactCards = [
@@ -93,11 +93,7 @@ export default function Community() {
             ))}
           </div>
 
-          {activeAction && (
-            <p className="cng-feedback">
-              Selected: <strong>{activeAction}</strong>
-            </p>
-          )}
+      
         </div>
 
         {/* Right Column — Impact Grid */}

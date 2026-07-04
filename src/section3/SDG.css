@@ -4,11 +4,12 @@
 }
 
 .sdg-container {
-  
-  
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  
+  justify-content: space-between;
   gap: 114px;
 }
 
@@ -37,14 +38,19 @@
 
 .sdg-description {
   font-size: 15px;
-  line-height: 27px;width: 541px;
+  line-height: 27px;
+  
+  max-width: 545px;
+  width: 100%;
   color: #475569;
   margin-bottom: 32px;
 }
 
 .sdg-btn {
   border: none;
-  outline: none;width: 203px;height: 53px;
+  outline: none;
+  width: 203px;
+  height: 53px;
   cursor: pointer;
   padding: 17px 24px;
   border-radius: 40px;
@@ -52,7 +58,6 @@
   font-weight: 600;
   color:#FFFFFF;
   background: linear-gradient(104.85deg, #1A56DB 0%, #06B6D4 100%);
-
   transition: all 0.3s ease;
 }
 
@@ -62,53 +67,191 @@
 
 /* Right Side */
 .sdg-image {
-  
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .sdg-image img {
-  width: 624px;height: 420px;
+  width: 100%;
+  max-width: 624px; /* Maintain max scale but allow shrinking */
+  height: auto; /* Removed fixed 420px height */
+  aspect-ratio: 624 / 420; /* Keep the original aspect ratio */
   border-radius: 30px;
   display: block;
   object-fit: cover;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
+
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .sdg-section {
+    /* Convert rigid padding to rem */
+    padding: 5rem 2.5rem;
+  }
+
   .sdg-container {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 50px;
+    /* Convert 114px gap to percentage to prevent flex breaking */
+    gap: 4%;
+  }
+
+  .sdg-content {
+    /* Explicitly define width to split row fairly */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .sdg-tag {
+    /* Convert font-size, padding, margin to rem */
+    font-size: 0.6875rem; /* 11px */
+    letter-spacing: 0.25rem; /* 4px */
+    margin-bottom: 1rem;
+  }
+
+  .sdg-title {
+    /* Scale down 36px font-size to rem to prevent overflow */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sdg-description {
+    /* Convert font-size to rem and remove fixed pixel width */
+    font-size: 0.9375rem; /* 15px */
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .sdg-btn {
+    /* Convert sizes to rem */
+    width: 12.6875rem; /* 203px */
+    height: 3.3125rem; /* 53px */
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .sdg-image {
+    /* Explicitly define width to split row fairly */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .sdg-image img {
+    /* Ensure image scales flawlessly */
+    width: 100%;
+    height: auto;
+    /* Convert border-radius to rem */
+    border-radius: 1.5rem; /* 24px */
+  }
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sdg-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .sdg-container {
+    gap: 2rem;
+  }
+
+  .sdg-content,
+  .sdg-image {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+
+  .sdg-image {
+    justify-content: flex-end; /* match desktop */
+  }
+.sdg-image img {
+    width: 100%;
+    max-width: 624px;
+    height: auto;
+    aspect-ratio: 624 / 550;
+    border-radius: 30px;
+    display: block;
+    object-fit: cover;
+}
+  .sdg-title {
+    font-size: 1.8rem;
+  }
+
+  .sdg-description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.125rem;
+  }
+  .sdg-tag{
+    margin-bottom: 0.1rem;
+    
+  }
+}
+
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 435px) {
+  .sdg-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .sdg-container {
+    flex-direction: column;
+    gap: 2rem;
   }
 
   .sdg-content {
     max-width: 100%;
+    width: 100%;
+  }
+
+  .sdg-tag {
+    font-size: 0.6875rem;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1rem;
+    display: block;
   }
 
   .sdg-title {
-    font-size: 42px;
+    font-size: 1.5rem; margin-bottom: 0.5rem;
   }
 
-  .sdg-image {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .sdg-section {
-    padding: 70px 20px;
-  }
-
-  .sdg-title {
-    font-size: 34px;
+  .sdg-title br {
+    display: none;
   }
 
   .sdg-description {
-    font-size: 16px;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    width: 100%;
   }
 
   .sdg-btn {
     width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 1rem;
+    font-size: 0.875rem;
+    border-radius: 2rem;
+  }
+
+  .sdg-image {
+    max-width: 100%;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sdg-image img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 1.25rem;
   }
 }

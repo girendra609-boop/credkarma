@@ -34,14 +34,13 @@ export default function Request() {
         </p>
 
         <div className="simple-process__steps">
-          {/* Connector line behind the circles */}
-          <div className="simple-process__connector" />
-
           {steps.map((step) => (
             <div className="simple-process__step" key={step.number}>
               <div className="simple-process__circle">{step.number}</div>
-              <p className="simple-process__step-title">{step.title}</p>
-              <p className="simple-process__step-desc">{step.description}</p>
+              <div className="simple-process__step-text">
+                <p className="simple-process__step-title">{step.title}</p>
+                <p className="simple-process__step-desc">{step.description}</p>
+              </div>
             </div>
           ))}
         </div>

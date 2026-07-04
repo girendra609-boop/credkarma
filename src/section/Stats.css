@@ -61,6 +61,9 @@
   .stats-container {
     grid-template-columns: 1fr;
   }
+  .stats-section {
+    padding-bottom: 60px;
+  }
 }
 
 /* Local Container Styles */
@@ -84,4 +87,29 @@
 		width: calc(100% - 32px);
 		margin-left: 16px;
 	}
+}
+
+/* Small Laptop Responsive Fixes (1024px–1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  /* Reduce outer container margins to prevent crowding */
+  .stats-local-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+  }
+
+  /* Keep 5 columns but significantly reduce the excessive 80px gap and padding */
+  .stats-container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    padding: 24px 32px;
+  }
+
+  /* Scale font size down proportionally so numbers don't wrap */
+  .stat-card h2 {
+    font-size: 1.75rem;
+  }
+
+  .stat-card p {
+    font-size: 0.7rem;
+  }
 }

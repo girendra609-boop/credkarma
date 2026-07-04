@@ -1,6 +1,6 @@
 import React from 'react'
 import "./CSR.css";
-import csr from "../assets/csr.png";
+import csr from "../assets/gpt.png";
 
 const features = [
   "CSR execution support",

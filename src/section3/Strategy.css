@@ -5,10 +5,12 @@
 
 .strategy-container {
   background: white;
-  
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  /* justify-content: space-between; */
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 94px;
 }
 
@@ -48,6 +50,8 @@
 
 .strategy-description {
   font-size: 15px;
+  max-width: 620px;
+  width: 100%;
   line-height: 27px;
   color: #475569;
   margin-bottom: 35px;
@@ -69,54 +73,179 @@
 }
 
 .strategy-check-icon {
-  width: 22px;
-  height: 22px;
-  background: #10B981;
-  color: white;
+  width: 24px;
+  height: 24px;
+  background-color:#10B981;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
   flex-shrink: 0;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .strategy-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 50px;
+
+
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
   }
 
-  .strategy-features {
-    align-items: center;
+  .strategy-section {
+    /* Convert fixed margins to rem and reduce side margins */
+    margin: 4rem 2.6rem;
+  }
+
+  .strategy-container {
+    /* Use percentage gap instead of rigid 94px */
+    gap: 4%;
+  }
+
+  .strategy-image {
+    /* Explicitly split half the row width */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .strategy-image img {
+    /* Override rigid 576px width to perfectly scale in column */
+    width: 100%;
+    height: auto;
+    /* Use rem for border radius */
+    border-radius: 1.5rem; /* 24px */
+  }
+
+  .strategy-content {
+    /* Explicitly split half the row width */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .strategy-tag {
+    /* Convert font size and margin to rem */
+    font-size: 0.6875rem; /* 11px */
+    letter-spacing: 0.25rem; /* 4px */
+    margin-bottom: 1rem;
   }
 
   .strategy-title {
-    font-size: 42px;
+    /* Scale down 36px font-size to rem to prevent overflow */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .strategy-description {
+    /* Convert font-size to rem */
+    font-size: 0.9375rem; /* 15px */
+    margin-bottom: 1.5rem;width: 30rem;
+  }
+
+  .strategy-features {
+    /* Convert gap to rem */
+    gap: 1rem;
+  }
+
+  .featuree-item {
+    /* Convert font-size and gap to rem */
+    font-size: 0.9375rem; /* 15px */
+    gap: 0.875rem; /* 14px */
+  }
+
+  .strategy-check-icon {
+    /* Convert width, height, padding to rem */
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+    padding: 0.375rem; /* 6px */
+  }
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .strategy-section {
+    margin: 4rem 1.5rem;
+  }
+
+
+  .strategy-container {
+    flex-direction: column;
+    text-align: left;
+    gap: 3rem;
+  
+  }
+
+  .strategy-features {
+    align-items: flex-start;gap: 5px;
+  }.strategy-description {
+    font-size: 1rem;margin-bottom: 20px;
+  }
+
+  .strategy-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 435px) {
+  .strategy-section {
+    margin: 2.5rem 1rem;
+  }
+
+  .strategy-container {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .strategy-image {
+    width: 100%;
   }
 
   .strategy-image img {
     max-width: 100%;
+    border-radius: 1.25rem;
+    height: auto;
   }
-}
 
-@media (max-width: 768px) {
-  .strategy-section {
-    padding: 60px 20px;
+  .strategy-content {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+  }
+
+  .strategy-tag {
+    font-size: 0.6875rem;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1rem;
+    display: block;
   }
 
   .strategy-title {
-    font-size: 32px;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
   }
 
   .strategy-description {
-    font-size: 16px;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
-  .feature-item {
-    font-size: 16px;
+  .strategy-features {
+    gap: 1rem;
+  }
+
+  .featuree-item {
+    font-size: 0.9375rem;
+    gap: 0.75rem;
+  }
+
+  .strategy-check-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 5px;
   }
 }

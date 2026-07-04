@@ -12,19 +12,19 @@ import Footer from "../section/Footer"
 
 export default function Network() {
   return (
-    <div className="network-page">
+    <div className="network-page"> <Navbar />
       <div className="network-hero-wrapper">
-        <Navbar />
+       
         <section className="network-section network-local-container">
           <div className="network-left">
             <div className="network-tag">
-              • VOLUNTEERS PAGE
+              VOLUNTEERS PAGE
             </div>
 
             <h1 className="network-title">
-              Volunteer.<br />
-              Earn<br />
-              Experience.<br />
+              Volunteer. <br />
+              Earn <br />
+              Experience. <br />
               <span className="text-highlight">Create Impact.</span>
             </h1>
 

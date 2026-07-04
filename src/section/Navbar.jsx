@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import nav1 from "../assets/logo.png";
 import arrow from "../assets/arrow.png";
@@ -8,6 +8,27 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const menuRef = useRef(null);
+  const hamburgerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        menuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -37,8 +58,8 @@ function Navbar() {
   return (
     <div className="navbar-wrap">
       {/* Semi-transparent dark overlay */}
-      <div 
-        className={`nav-overlay ${menuOpen ? "open" : ""}`} 
+      <div
+        className={`nav-overlay ${menuOpen ? "open" : ""}`}
         onClick={() => setMenuOpen(false)}
         aria-hidden="true"
       ></div>
@@ -49,17 +70,10 @@ function Navbar() {
         </div>
 
         {/* Slide-in navigation drawer */}
-        <div className={`nav-center ${menuOpen ? "open" : ""}`}>
-          <button 
-            className="close-menu" 
-            onClick={() => setMenuOpen(false)} 
-            aria-label="Close menu"
-          >
-            &times;
-          </button>
+        <div ref={menuRef} className={`nav-center ${menuOpen ? "open" : ""}`}>
           <ul>
             <li>
-              <button type="button" className="nav-link" onClick={() => goHomeAndScroll("about")}>
+              <button type="button" className={getLinkClass("/")} onClick={() => goHomeAndScroll("about")}>
                 Home
               </button>
             </li>
@@ -99,6 +113,14 @@ function Navbar() {
                 About
               </Link>
             </li>
+            <li className="mobile-support-btn-container">
+              <button type="button" className="support-btn" onClick={() => goHomeAndScroll("donation")}>
+                <span className="btn-text">Request Support</span>
+                <span className="btn-arrow">
+                  <img className="navarrow" src={arrow} alt="" />
+                </span>
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -109,10 +131,11 @@ function Navbar() {
               <img className="navarrow" src={arrow} alt="" />
             </span>
           </button>
-          
-          <button 
-            className={`hamburger ${menuOpen ? "open" : ""}`} 
-            onClick={() => setMenuOpen(!menuOpen)} 
+
+          <button
+            ref={hamburgerRef}
+            className={`hamburger ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Open menu"
           >
             <span className="bar"></span>

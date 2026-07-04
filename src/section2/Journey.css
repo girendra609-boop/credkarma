@@ -1,15 +1,38 @@
+/* ─────────────────────────────────────────────────────────────────
+   FIX 1: Replaced  padding: 80px 80px  on the <section> with a
+   max-width + horizontal-padding centering model.
+
+   WHY IT BROKE:
+   <section> is a block element whose width = parent content-area
+   width.  In normal mode a scrollbar is present (~15 px wide), so
+   100 % of parent ≈ viewport − 15 px.  In DevTools mode the panel
+   swallows the scrollbar gutter, so 100 % = full viewport.  Fixed
+   80 px padding on each side therefore resolves against two
+   different totals → left/right spacing appears unequal.
+
+   FIX: Put the centering logic inside the section itself using
+   max-width + symmetric padding + margin: 0 auto.  Because padding
+   is always the same fixed pixel value regardless of parent width,
+   both sides stay perfectly equal in every mode.
+   ───────────────────────────────────────────────────────────────── */
 .journey-section {
   padding: 80px 0;
   background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .journey-container {
-
-  margin: 0px 80px;
+  max-width: 1280px;
+  width: calc(100% - 160px);
+  margin-left: max(80px, calc((100% - 1280px) / 2));
+  margin-right: auto;
+  
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 80px;
+  gap: 60px;
+  box-sizing: border-box;
 }
 
 /* LEFT SIDE */
@@ -47,7 +70,7 @@
 
 .timeline-item {
   display: flex;
-  gap: 32px;
+  gap: 52px;
 }
 
 .timeline-left {
@@ -57,9 +80,9 @@
 }
 
 .timeline-circle {
-  flex: 0 0 46px;
-  width: 46px;
-  height: 46px;
+  
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1.5px solid #DBEAFE;
   background: transparent;
@@ -113,50 +136,65 @@
 /* RIGHT IMAGE */
 
 .journey-image {
-  
   display: flex;
   justify-content: center;
+
+  min-width: 0;
 }
 
+/* ─────────────────────────────────────────────────────────────────
+   FIX 3: Remove the hardcoded 576 × 576 px image dimensions.
+
+   WHY IT BROKE:
+   A rigid 576 px width means the image column always demands
+   exactly 576 px of space regardless of viewport size.  The
+   left content column (flex: 1) then gets whatever is left over,
+   so the two-column split is never truly 50/50 and shifts
+   whenever the viewport width changes (e.g. DevTools open/close).
+
+   FIX: width: 100% + height: auto lets the image fill its flex
+   column naturally.  max-width: 576px preserves the design
+   intent (never bigger than the original) while allowing it to
+   shrink on smaller screens.
+   ───────────────────────────────────────────────────────────────── */
 .journey-image img {
-  
-  width: 576px;height: 520px;
+  width: 100%;           /* Fill the flex column */
+  max-width: 576px;      /* Never exceed original design size */
+  height: auto;          /* Maintain aspect ratio — no distortion */
+  aspect-ratio: 576 / 560;
   display: block;
   border-radius: 24px;
+  object-fit: cover;
 }
 
-/* TABLET */
-
-@media (max-width: 1024px) {
-  .journey-container {
-    flex-direction: column;
-    gap: 60px;
-  }
-
-  .journey-content,
-  .journey-image {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .journey-heading {
-    font-size: 46px;
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 768px) {
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1279px)
+   FIX: Removed  body { overflow-x: hidden }  from here —
+   it belongs in index.css globally, not scoped to a
+   component media query.
+   FIX: Removed percentage-based gap (4%) — replaced with
+   fixed 40px which is predictable at all widths.
+   FIX: Removed max-width: 48% on columns — flex: 1 is
+   sufficient since both columns now have flex: 1.
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1440px) {
   .journey-section {
-    padding: 70px 20px;
+    padding: 60px 0;
+  }
+
+  .journey-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    gap: 40px;
   }
 
   .journey-heading {
-    font-size: 36px;
+    font-size: 28px;
+    margin-bottom: 32px;
   }
 
   .timeline-item {
-    gap: 18px;
+    gap: 32px;
   }
 
   .timeline-content h3 {
@@ -165,9 +203,68 @@
 
   .timeline-content p {
     font-size: 14px;
+    max-width: 100%;
+  }
+}
+
+/* TABLET STYLES (768px - 1023px) — Unchanged from original */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .journey-section {
+    padding: 60px 0;
   }
 
-  .timeline-line {
-    height: 110px;
+  .journey-container {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .journey-image img {
+    width: 100%;
+    max-width: 576px;
+    height: auto;
+  }
+}
+
+/* MOBILE STYLES (320px - 425px) */
+@media (max-width: 480px) {
+  .journey-section {
+    padding: 40px 0;
+  }
+
+  .journey-container {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Reduce heading font size to prevent long words from overflowing the 320px width */
+  .journey-heading {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  /* Reduce horizontal gap between the timeline circle and the text content */
+  .timeline-item {
+    gap: 16px;
+  }
+
+  /* Adjust timeline heading size to better fit narrow screens */
+  .timeline-content h3 {
+    font-size: 18px;
+  }
+
+  /* Adjust paragraph font size for mobile readability */
+  .timeline-content p {
+    font-size: 14px;
+  }
+
+  /* Scale the image properly while maintaining the original aspect ratio without distortion */
+  .journey-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
   }
 }

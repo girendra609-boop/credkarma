@@ -5,8 +5,9 @@
 }
 
 .impact-container {
-  
-  
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,15 +60,14 @@
 }
 
 .impactsection-check-icon {
-  width: 22px;
-  height: 22px;
-  background: #10b981;
-  color: white;
-  border-radius: 50%;font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  background-color: #10b981;
+  border-radius: 50%;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 /* Right Side */
@@ -120,32 +120,97 @@ box-shadow: 0px 4px 20px 0px #0A246317;
   border-radius: 20px;
 }
 
-/* Responsive */
 
-@media (max-width: 992px) {
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .impactt-section {
+    /* Convert rigid padding to rem */
+    padding: 5rem 2.4rem;
+  }
+
   .impact-container {
-    flex-direction: column;
+    /* Convert rigid 80px gap to percentage to prevent layout squeezing */
+    gap: 4%;
+  }
+
+  .impact-tag {
+    font-size: 0.6875rem; /* 11px */
+    letter-spacing: 0.1875rem; /* 3px */
   }
 
   .impact-content h2 {
-    font-size: 42px;
-  }
-}
-
-@media (max-width: 768px) {
-  .impact-section {
-    padding: 60px 20px;
-  }
-
-  .impact-content h2 {
-    font-size: 34px;
+    /* Scale down 36px font-size to rem */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .impact-content p {
-    font-size: 16px;
+    /* Remove rigid pixel boundary so text can flow freely */
+    max-width: 100%;
+    font-size: 0.9375rem; /* 15px */
+    margin-bottom: 2rem;
   }
 
-  .indicator-item {
-    font-size: 16px;
+  .progress-card {
+    /* Convert padding to rem and allow it to shrink appropriately */
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .impactt-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .impact-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .impact-content {
+    width: 100%;
+  }
+
+  .impact-content h2 {
+    font-size:2rem;
+  }
+
+  .impact-content p {
+    max-width: 100%;
+  }
+
+  .progress-card {
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 435px) {
+  .impact-container {
+    flex-direction: column;gap: 2rem;
+  }
+
+   .impactt-section {
+    padding: 3rem 1rem;
+  }
+  .impact-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .progress-card {
+    width: 100%;
+    box-sizing: border-box;
   }
 }

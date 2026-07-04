@@ -11,9 +11,9 @@ const Transform = () => {
       <p className="transform-content1">Where needs became change.</p>
       </div>
       <div className="transform-grid">
-        <img  style={{width:"416px",height:"380px"}} src={transform1} alt="" />
-        <img style={{width:"416px",height:"380px"}} src={transform2} alt="" />
-        <img style={{width:"416px",height:"380px"}} src={transform3} alt="" />
+        <img className="transform-img" src={transform1} alt="Community transformation 1" />
+        <img className="transform-img" src={transform2} alt="Community transformation 2" />
+        <img className="transform-img" src={transform3} alt="Community transformation 3" />
       </div>
       <div>
 

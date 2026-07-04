@@ -4,10 +4,15 @@
 }
 
 .rewards-container {
+  max-width: 1280px;
+  width: calc(100% - 160px);
+  margin-left: max(80px, calc((100% - 1280px) / 2));
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .rewards-tag {
@@ -48,16 +53,14 @@
 }
 
 .show-check-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #10b981;
-  color: white;
-  font-size: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #10b981;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .rewards-gallery {
@@ -75,17 +78,33 @@
   display: block;
   border-radius: 16px;
 }
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .show-local-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+  .show-local-container {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: auto;
+  }
+}
 
 /* Tablet */
-
 @media (max-width: 992px) {
   .rewards-heading {
     font-size: 38px;
   }
 
   .rewards-gallery {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
+
+  
 
   .gallery-card img {
     height: auto;
@@ -93,10 +112,17 @@
 }
 
 /* Mobile */
-
 @media (max-width: 768px) {
   .rewards-section {
-    padding: 70px 20px;
+    padding: 60px 0;
+  }
+
+  .rewards-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-card:last-child {
+    width: 100%;
   }
 
   .rewards-benefits {
@@ -110,25 +136,40 @@
   }
 }
 
-/* Local Container Styles */
-.show-local-container {
-	max-width: 1280px;
-	width: calc(100vw - 160px);
-	margin-left: max(80px, calc((100vw - 1280px) / 2));
-	margin-right: auto;
-	box-sizing: border-box;
+/* Small Mobile (320px - 425px) */
+@media (max-width: 435px) {
+  .rewards-section {
+    padding: 30px 0;
+  }
+
+  .rewards-heading {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .rewards-benefits {
+    margin-bottom: 30px;
+    gap: 10px;
+    align-items: flex-start; /* Better alignment on small screens */
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  .benefit-item {
+    font-size: 13px;
+  }
+
+  .rewards-gallery {
+    gap: 20px;
+  }
 }
 
-@media (max-width: 900px) {
-	.show-local-container {
-		width: calc(100vw - 48px);
-		margin-left: 24px;
-	}
-}
-
+/* Tablet container queries already handle max-width: 900px */
 @media (max-width: 480px) {
 	.show-local-container {
-		width: calc(100vw - 32px);
+		width: calc(100% - 32px);
 		margin-left: 16px;
+    margin-right: auto;
 	}
 }

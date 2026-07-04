@@ -12,8 +12,7 @@ const SDG = () => {
           <span className="sdg-tag">SDG ALIGNMENT</span>
 
           <h2 className="sdg-title">
-            Aligned to
-            <br />
+            Aligned to <br />
             global goals.
           </h2>
 

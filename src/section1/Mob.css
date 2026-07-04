@@ -1,21 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
 
 .volunteerr-section {
-  
-  padding: 100px 80px;
-    
+  width: 100%;
+  background-color: #F8FAFC;
+}
+
+.volunteerr-container {
+  max-width: 1280px;
+  width: calc(100% - 160px);
+  margin-left: max(80px, calc((100% - 1280px) / 2));
+  margin-right: auto;
+  padding: 100px 0;
   display: flex;
   align-items: center;
   gap: 80px;
-background-color: #F8FAFC;
   font-family: "DM Sans", sans-serif;
+  box-sizing: border-box;
 }
 
 
 
-.volunteerr-image img {
+.volunteerr-image {
   
-  width: 576px;height: 500px;
+  min-width: 0;
+}
+
+.volunteerr-image img {
+  width: 100%;
+  max-width: 576px;
+  height: 500px;
   border-radius: 28px;
   display: block;
   object-fit: cover;
@@ -23,7 +36,7 @@ background-color: #F8FAFC;
 
 .volunteer-content {
   flex: 1;
-  max-width: 520px;
+  min-width: 0;
 }
 
 .volunteerr-tag {
@@ -52,7 +65,7 @@ background-color: #F8FAFC;
 
 .volunteer-list {
   list-style: none;
-  padding: 0;
+  padding: 0;border: none;
   margin: 0;
 }
 
@@ -67,46 +80,188 @@ background-color: #F8FAFC;
 }
 
 .cheeck-icon {
-  color: #10B981;padding: -20px;
-  
-  font-size: 18px;font-weight: 800;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
   flex-shrink: 0;
+  background-color: #10B981;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
 }
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
+  }
 
-/* Tablet */
+  .volunteerr-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    margin-right: auto;
+    padding: 5rem 0;
+    gap: 4%;
+  }
 
-@media (max-width: 992px) {
-  .volunteer-section {
-    flex-direction: column;
-    gap: 50px;
+  .volunteerr-image {
+    /* Allow the image container to shrink/grow properly in the row */
+    flex: 1;
+  }
+
+  .volunteerr-image img {
+    /* Replace fixed 576px width with 100% to prevent horizontal overflow */
+    width: 100%;
+    /* Replace fixed 500px height with auto to prevent distortion */
+    height: auto;
+    /* Preserve aspect ratio natively */
+    aspect-ratio: 576 / 500;
+    /* Convert border-radius to rem */
+    border-radius: 1.75rem; /* 28px */
   }
 
   .volunteer-content {
+    /* Allow the content to share the remaining row width equally */
+    flex: 1;
+    /* Replace fixed 520px max-width with 100% to allow fluid text wrapping */
     max-width: 100%;
   }
 
+  .volunteerr-tag {
+    /* Convert font-size and margin to rem */
+    font-size: 0.6875rem; /* 11px */
+    margin-bottom: 1rem; /* 16px */
+  }
+
   .volunteer-content h2 {
-    font-size: 38px;
+    /* Convert 36px font-size and margin to rem */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .volunteer-content p {
+    /* Convert 15px font-size and margin to rem */
+    font-size: 0.9375rem; 
+    margin-bottom: 1.875rem; /* 30px */
+  }
+
+  .volunteer-list li {
+    /* Convert font-size, margin, and gap to rem */
+    font-size: 0.9375rem;
+    margin-bottom: 1.125rem; /* 18px */
+    gap: 0.75rem; /* 12px */
+  }
+
+  .cheeck-icon {
+    /* Convert width, height, and padding to rem */
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+    padding: 0.375rem; /* 6px */
   }
 }
 
-/* Mobile */
+/* =========================================================
+   Tablet Specific Overrides (768px - 1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* 
+   * Reason: Prevent horizontal scrolling which can occur during flexbox resizing.
+   */
+  body {
+    overflow-x: hidden;
+  }
 
-@media (max-width: 768px) {
-  .volunteer-section {
-    padding: 0 20px;
-    margin: 70px auto;
+  /* 
+   * Reason: The desktop padding (80px) and gap (80px) are too large for tablet, 
+   * causing the content to overflow or squash. Reducing them gives enough 
+   * breathing room for a side-by-side layout.
+   */
+  .volunteerr-container {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: auto;
+    padding: 60px 0;
+    gap: 50px;
+  }
+
+  /* 
+   * Reason: Allow the image container to scale proportionally instead of 
+   * forcing a fixed size, sharing the available row width.
+   */
+  .volunteerr-image {
+    flex: 1;
+  }
+
+  /* 
+   * Reason: The fixed width (576px) and height (500px) on the image break 
+   * the tablet layout. Making it 100% width with the original aspect ratio 
+   * ensures it scales down perfectly without distorting.
+   */
+  .volunteerr-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 576 / 500;
+  }
+
+  /* 
+   * Reason: Allow the text container to share the remaining row width 
+   * equally with the image.
+   */
+  .volunteer-content {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  /* 
+   * Reason: The desktop heading font size (36px) is too large for the 
+   * reduced tablet width, causing awkward word wrapping. Scaling it down 
+   * maintains the visual hierarchy.
+   */
+  .volunteer-content h2 {
+    font-size: 28px;
+  }
+}
+
+/* Small Mobile (320px - 425px) */
+@media (max-width: 435px) {
+  .volunteerr-container {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: auto;
+    padding: 40px 0;
+    gap: 30px;
+    display: flex; 
+    flex-direction: column;
+  }
+
+  .volunteerr-image img {
+    border-radius: 16px;
+    width: 100%;
+    height: auto;
   }
 
   .volunteer-content h2 {
-    font-size: 30px;
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 12px;
   }
 
   .volunteer-content p {
     font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .volunteer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .volunteer-list li {
     font-size: 14px;
+    margin-bottom: 12px;
+    align-items: flex-start;
   }
 }

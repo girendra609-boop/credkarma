@@ -253,7 +253,7 @@
    RESPONSIVE
 =========================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .hiw-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -261,7 +261,7 @@
 
 @media (max-width: 768px) {
   .hiw-section {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .hiw-heading {
@@ -293,9 +293,12 @@
     font-size: 15px;
     line-height: 24px;
   }
+  .hiw-card-title {
+    font-size: 15px;margin-top: 10px;
+  }
 
   .hiw-cta-btn {
-    width: 100%;
+    width: 100%;gap: 20px;
     justify-content: center;
   }
 }
@@ -309,7 +312,7 @@
 	box-sizing: border-box;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 481px) and (max-width: 1023px) {
 	.hiw-local-container {
 		width: calc(100% - 48px);
 		margin-left: 24px;
@@ -321,4 +324,49 @@
 		width: calc(100% - 32px);
 		margin-left: 16px;
 	}
+}
+
+/* Small Laptop Responsive Fixes (1024px–1439px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  /* Expand available width by shrinking outer container margins */
+  .hiw-local-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+  }
+
+  /* Force 4 columns smoothly across all laptop sizes, overriding the 1025px 2-column snap */
+  .hiw-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  /* Shrink internal card padding to reclaim horizontal space */
+  .hiw-card-body {
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+  }
+
+  /* Scale image height down since the width is narrower */
+  .hiw-card-img {
+    height: 140px;
+  }
+
+  /* Scale badge and text down to prevent cramped title wrapping */
+  .hiw-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .hiw-card-title-row {
+    gap: 8px;
+  }
+
+  .hiw-card-title {
+    font-size: 1.05rem;
+  }
+
+  .hiw-list-item {
+    font-size: 0.8rem;
+  }
 }

@@ -50,7 +50,7 @@
   margin-top: 20px;width: 232px; height: 54px;
   padding: 12px 28px;
   background: #ffffff;
-  color: #1a3a8f;
+  color:#0A2463;
   font-family: "DM Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -76,12 +76,52 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 480px) {
+
+
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   .post-requirement {
-    padding: 40px 20px;
+    height: auto;
+    padding: 4rem 2rem;
   }
 
   .post-requirement__heading {
-    font-size: 24px;
+    font-size: 2.25rem;
+  }
+
+  .post-requirement__subtext {
+    font-size: 1rem;
+  }
+
+    .post-requirement__btn {
+    width: auto;
+    height: auto;
+    padding: 1rem 1.5rem;
   }
 }
+
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 426px) {
+  .post-requirement {
+    height: auto;
+    padding: 3rem 1.25rem;
+    margin-top: 70px;
+  }
+
+  .post-requirement__heading {
+    font-size: 1.75rem;
+  }
+
+  .post-requirement__subtext {
+    font-size: 1rem;
+  }
+
+  .post-requirement__btn {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+}
+

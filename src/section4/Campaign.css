@@ -5,7 +5,7 @@
 }
 
 .campaign-container {
-  max-width: 1274px; /* 410*3 + 22*2 */
+  max-width: 1280px; /* 410*3 + 22*2 */
   margin: 0 auto;
 }
 
@@ -28,20 +28,23 @@
 
 .campaign-grid {
   display: grid;
-  grid-template-columns: repeat(3, 410px);
+  grid-template-columns: repeat(3, 1fr); /* Changed from 410px to 1fr */
   gap: 22px;
   justify-content: center;
 }
 
 .campaign-card {
-  width: 410px;
-  height: 380px;
+  width: 100%;
+  max-width: 410px; /* Changed from fixed width */
+  height: auto;
+  min-height: 20rem; /* Changed from fixed height */
   background: #fff;
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid #e5e7eb;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  margin: 0 auto; /* Center the cards */
 }
 
 .campaign-card:hover {
@@ -49,8 +52,9 @@
 }
 
 .campaign-image {
-  width: 410px;
-  height: 200px;
+  width: 100%;
+  height: auto; /* Removed fixed 200px height */
+  aspect-ratio: 410 / 200; /* Kept the ratio fluid */
   object-fit: cover;
   display: block;
 }
@@ -103,52 +107,130 @@
 .donate-link {
   background: transparent;
   border: none;
-  color: #2563eb;
+  color: #2563eb;font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
 }
 
-/* Tablet */
 
-@media (max-width: 1400px) {
-  .campaign-grid {
-    grid-template-columns: repeat(2, 410px);
-    justify-content: center;
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
   }
-}
 
-/* Mobile */
-
-@media (max-width: 900px) {
   .campaign-section {
-    padding: 60px 20px;
+    /* Convert rigid padding to rem */
+    padding: 5rem 2.5rem;
   }
 
-  .campaign-grid {
-    grid-template-columns: 410px;
-    justify-content: center;
+  .section-label {
+    /* Convert font-size and letter-spacing to rem */
+    font-size: 0.6875rem; /* 11px */
+    letter-spacing: 0.1875rem; /* 3px */
+    margin-bottom: 1rem;
   }
 
   .section-title {
-    font-size: 34px;
+    /* Scale down 36px font-size to rem */
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
-}
 
-/* Small Mobile */
-
-@media (max-width: 480px) {
   .campaign-grid {
-    grid-template-columns: 1fr;
+    /* Convert gap to rem */
+    gap: 1.5rem;
   }
 
   .campaign-card {
-    width: 100%;
-    max-width: 410px;
-    justify-self: center;
+    /* Remove rigid max-width so the 3-column grid perfectly distributes them */
+    max-width: 100%;
+    min-height: 18rem;
   }
 
-  .campaign-image {
-    width: 100%;
+  .campaign-content {
+    /* Convert padding to rem */
+    padding: 1.5rem;
+  }
+
+  .campaign-category {
+    font-size: 0.625rem; /* 10px */
+    letter-spacing: 0.125rem;
+  }
+
+  .campaign-content h3 {
+    /* Scale down 18px font-size */
+    font-size: 1.125rem;
+    margin: 0.5rem 0 1rem;
+  }
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .campaign-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .campaign-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Center the 3rd card on the second row */
+  .campaign-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .campaign-content {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================================================
+   Mobile Responsive Fixes (320px - 425px)
+   ========================================================= */
+@media (min-width: 320px) and (max-width: 435px) {
+  .campaign-section {
+    padding: 3rem 1rem; /* Prevent 80px side padding from causing horizontal scroll */
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem; /* Scale down heading */
+    margin-bottom: 1.5rem;
+  }
+
+  .campaign-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically to prevent horizontal overflow */
+    gap: 1.5rem;
+  }
+
+  .campaign-card {
+    max-width: 100%; /* Allow cards to naturally fill the mobile container width */
+  }
+
+  .campaign-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1; /* Ensure safe rendering if inherited from tablet */
+  }
+
+  .campaign-content {
+    padding: 1.25rem; /* Shrink padding slightly to maximize usable space */
+  }
+
+  .campaign-content h3 {
+    font-size: 1.1rem; /* Scale down card title */
+    margin: 0.5rem 0 0.8rem;
   }
 }

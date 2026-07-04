@@ -5,8 +5,9 @@
 }
 
 .corporate-container {
-  
-  margin-top: 76px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 76px auto 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,25 +18,31 @@
 .corporate-content {
   flex: 1;
   max-width: 580px;
+  min-width: 0;
 }
 
 .corporate-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #f3e8b3;
-  color: #a95d00;height: 31px;
-  font-size: 13px;
+  background:#FEF3C7;
+  color: #92400E;
+  font-size: 12px;
   font-weight: 600;
-  padding: 12px 20px;
+  padding: 8px 14px;
   border-radius: 30px;
   margin-bottom: 30px;
-  width: 100%;
-  max-width: 580px;
+  width: fit-content;
 }
 
-.corporate-badge span {
-  font-size: 18px;
+.corporate-badge::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #F59E0B;
+  flex-shrink: 0;
 }
 
 .corporate-title {
@@ -53,7 +60,9 @@
 .corporate-description {
   font-size: 18px;
   line-height: 31px;
-  color:#64748B;width: 331px;
+  color:#64748B;
+  width: 70%;
+  max-width: 100%;
   margin-bottom: 35px;
 }
 
@@ -91,9 +100,9 @@
   background: linear-gradient(90deg, #2563eb, #06b6d4);
   color: #fff;
   border: none;
-  padding: 18px 36px;
+  padding: 15px 15px;
   border-radius: 40px;
-  font-size: 18px;
+  font-size: 15px;width: 203px;height: 54px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
@@ -112,46 +121,211 @@
 
 .corporate-image img {
   width: 100%;
-  max-width: 640px;height: 560px;
+  max-width: 640px;
+  height: auto;
+  aspect-ratio: 640 / 560;
   border-radius: 30px;
   object-fit: cover;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* Responsive */
-@media (max-width: 992px) {
-  .corporate-container {
-    flex-direction: column;
-    text-align: center;
+
+
+  
+ 
+  @media (min-width: 320px) and (max-width: 435px) {
+
+  .corporate-section {
+    padding: 20px 16px;
   }
 
-  .corporate-features {
-    align-items: center;
+  .corporate-container {
+    flex-direction: column;
+    align-items: flex-start; /* Important */
+    gap: 30px;
+    margin-top: 40px;
+    margin-left: 0;
+  }
+
+  .corporate-content {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
   }
 
   .corporate-badge {
-    width: auto;
+    justify-content: flex-start;width: fit-content;
+    margin-top: 40px;  
   }
 
   .corporate-title {
-    font-size: 42px;
-  }
-}
-
-@media (max-width: 768px) {
-  .corporate-section {
-    padding: 40px 20px;
-  }
-
-  .corporate-title {
-    font-size: 34px;
+    font-size: 30px;
+    text-align: left;
   }
 
   .corporate-description {
+    width: 100%;
+    max-width: 100%;
     font-size: 18px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .corporate-features {
+    align-items: flex-start;
+    padding-left: 0;
+  }
+
+  .feature-item {
+    justify-content: flex-start;
   }
 
   .corporate-btn {
+    width: fit-content; /* instead of 100% */
+    max-width: none;
+  }
+
+  .corporate-image {
     width: 100%;
+    justify-content: flex-start;
+  }
+
+  .corporate-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .corporate-section {
+    /* Convert rigid padding to rem */
+    padding: 4rem 2.5rem;
+  }
+
+  .corporate-container {
+    /* Convert 60px gap to percentage to prevent flex breaking */
+    gap: 4%;
+  }
+
+  .corporate-content {
+    /* Explicitly define width to split row fairly */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .corporate-badge {
+    /* Convert font-size, padding, margin to rem */
+    font-size: 0.75rem; /* 12px */
+    padding: 0.5rem 0.875rem; /* 8px 14px */
+    margin-bottom: 1.5rem; /* 24px */
+  }
+
+  .corporate-title {
+    /* Scale down 36px font-size to rem to prevent overflow */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .corporate-description {
+    /* Convert font-size to rem and remove fixed pixel width */
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .corporate-features {
+    /* Convert gap and margin to rem */
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .feature-item {
+    /* Convert font-size and gap to rem */
+    font-size: 0.875rem; /* 14px */
+    gap: 0.875rem; /* 14px */
+  }
+
+  .feature-icon {
+    /* Convert sizes to rem */
+    width: 2.25rem; /* 36px */
+    height: 2.25rem; /* 36px */
+    border-radius: 0.625rem; /* 10px */
+  }
+
+  .corporate-btn {
+    /* Convert sizes to rem */
+    width: 12.5rem; /* 200px */
+    height: 3.375rem; /* 54px */
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .corporate-image {
+    /* Explicitly define width to split row fairly */
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .corporate-image img {
+    /* Remove rigid 640px limit to perfectly scale in column */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 640 / 560;
+    /* Convert border-radius to rem */
+    border-radius: 1.5rem; /* 24px */
+  }
+}
+
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .corporate-section {
+    padding: 4rem 1.5rem;
+  }
+.corporate-features
+ {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 20px;
+}
+  .corporate-container {
+    gap: 2rem;
+  }.corporate-btn {
+    padding: 1rem 1rem;font-size: 0.8rem;
+  }
+
+  .corporate-content,
+  .corporate-image {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+
+  .corporate-description {
+    width: 100%;line-height: 1.5rem;
+  
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .corporate-image img {
+    height: 25rem;
+    border-radius: 1.5rem;
+  }
+
+  .corporate-badge {
+    width: fit-content;
+  }
+  .corporate-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 }

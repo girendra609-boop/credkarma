@@ -23,7 +23,7 @@
 .story-card {
   background: white;
   border-radius: 14px;
-  overflow: hidden;
+  overflow: hidden;border: 1px solid #E2E8F0;
   width: 100%;
   max-width: 410px;
   height: 390px;
@@ -68,31 +68,26 @@ box-shadow: 0px 1px 3px 0px #00000014;
 
 .story-pills {
   margin-top: 6px;
-  display: flex;
+  display: flex;border-top: 1px solid #F1F5F9;padding-top:17px;
   gap: 8px;
   flex-wrap: wrap;
 }
 
 .pill {
-  display: inline-block;
-  padding: 6px 10px;font-family: "DM Sans",sans-serif;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 10px;font-family: "DM Sans",sans-serif;
+  border-radius: 999px;border: 1px solid #E2E8F0;width:auto;height: 27px;
   background: #f1f5f9;
   color: #0f172a;
   font-size: 12px;
 }
 
-@media (max-width: 1100px) {
-  .story-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
 
-@media (max-width: 700px) {
-  .story-grid {
-    grid-template-columns: 1fr;
-  }
-}
+
+
 
 /* Local Container Styles */
 .stories-local-container {
@@ -110,9 +105,61 @@ box-shadow: 0px 1px 3px 0px #00000014;
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 435px) {
 	.stories-local-container {
 		width: calc(100% - 32px);
-		margin-left: 16px;
+		margin-left: 16px;margin-top: 40px;margin-bottom: 50px;
 	}
+  .story-grid {
+    grid-template-columns: 1fr ;
+  }
+}
+
+/* Small Laptop Responsive Fixes (1024px–1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  /* Expand available width by shrinking container margins */
+  .stories-local-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+  }
+
+  /* Scale section heading */
+  .stories h2 {
+    font-size: 2.2rem;
+  }
+
+  /* Decrease gap slightly to favor card width */
+  .story-grid {
+    gap: 1rem;
+  }
+
+  /* Unlock fixed height so cards can grow if text wraps */
+  .story-card {
+    height: auto;
+    min-height: 22rem;
+  }
+
+  /* Scale image height down to match the narrower column proportion */
+  .story-image {
+    height: 180px;
+  }
+
+  /* Reclaim inner space by reducing padding */
+  .story-body {
+    padding: 1rem 1.25rem 1.25rem;
+    gap: 10px;
+  }
+
+  /* Shrink title to prevent awkward 3-line breaks */
+  .story-body h4,
+  .story-card h4 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  /* Ensure pills shrink gracefully */
+  .pill {
+    padding: 0 8px;
+    font-size: 11px;
+  }
 }

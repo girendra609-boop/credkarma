@@ -20,7 +20,7 @@ function Stories() {
             <div className="story-tag">VOLUNTEER STORIES</div>
             <h4>How volunteering changed my career</h4>
             <div className="story-pills">
-              <span className="pill"> <CiPlay1 /> Video</span>
+              <span className="pill"><CiPlay1 /> Video</span>
               <span className="pill">Metrics</span>
               <span className="pill">Before/After</span>
             </div>

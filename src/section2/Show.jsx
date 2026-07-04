@@ -4,6 +4,7 @@ import "./Show.css";
 import show1 from "../assets/show1.png";
 import show2 from "../assets/show2.png";
 import show3 from "../assets/show3.png";
+import ttk from "../assets/ttk.png";
 
 
 export default function Show() {
@@ -21,12 +22,12 @@ export default function Show() {
 
         <div className="rewards-benefits">
           <div className="benefit-item">
-            <span className="show-check-icon">✓</span>
+            <img src={ttk} alt="check" className="show-check-icon" />
             <span>Leadership Opportunities</span>
           </div>
 
           <div className="benefit-item">
-            <span className="show-check-icon">✓</span>
+            <img src={ttk} alt="check" className="show-check-icon" />
             <span>Community Recognition</span>
           </div>
         </div>

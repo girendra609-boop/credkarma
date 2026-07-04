@@ -39,8 +39,8 @@
   justify-content: space-between;
   gap: 80px;
   background-color: transparent;
-  padding: 120px 0 65px;
-  min-height: 520px;
+  padding: 120px 0px 65px;
+  min-height: 440px;
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
@@ -49,7 +49,7 @@
 .hero__content {
   flex: 1;
   min-width: 0;
-  max-width: 540px;
+  max-width: 440px;
 }
 
 /* Eyebrow */
@@ -159,14 +159,15 @@
 
 .btn--outline {
   background: var(--color-surface);
-  color: var(--color-text-heading);
+  color: var(--color-text-heading);width: 203px;height: 54px;
   border-color: var(--color-border);
 }
 
 .btn--outline:hover {
   border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: var(--color-eyebrow-bg);
+  color: #ffffff;
+   background: linear-gradient(104.85deg, #1A56DB 0%, #06B6D4 100%);
+ ;
 }
 
 .btn__icon {
@@ -178,7 +179,7 @@
 .hero__gallery {
   flex: 1;
   min-width: 0;
-  max-width: 660px;
+  max-width: 720px; /* Allow 350+350+20 */
 
   display: flex;
   gap: 20px;
@@ -189,7 +190,8 @@
 
 .hero__gallery-main {
   width: calc(50% - 10px);
-  min-height: 484px;
+  max-width: 350px;
+  min-height: 480px;
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: var(--shadow-gallery);
@@ -207,6 +209,7 @@
 
 .hero__gallery-side {
   width: calc(50% - 10px);
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -215,87 +218,252 @@
 .hero__gallery-side-top,
 .hero__gallery-side-bottom {
   flex: 1;
-  min-height: 232px;
+  min-height: 230px;
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: var(--shadow-gallery);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .hero {
-    gap: 48px;
-    padding-top: 112px;
-  }
-}
 
-@media (max-width: 768px) {
+
+
+/* ── Local Container Styles ── */
+.hero-local-container {
+  max-width: 1280px;
+  width: calc(100% - 160px);
+  margin-left: max(80px, calc((100% - 1280px) / 2));
+  margin-right: auto;
+  box-sizing: border-box;
+} 
+/* =========================================================
+   Mobile Responsive Fixes (320px–435px)
+   ========================================================= */
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero-local-container {
+    width: calc(100% - 2rem) !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
   .hero {
     flex-direction: column;
-    align-items: stretch;
-    gap: 40px;
-    padding: 108px 0 40px;
-    min-height: auto;
+    gap: 2.5rem;
+    padding: 6rem 0 2rem;
   }
 
-  .hero__content {
+  .hero__content,
+  .hero__gallery {
+    width: 100%;
     max-width: 100%;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1rem;
+    height: auto;
+  }
+
+  .hero__headline {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  .hero__sub {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+
+  .btn--outline {
+    width: 100%;
+    height: auto;
   }
 
   .hero__gallery {
     flex-direction: column;
+    gap: 1rem;
   }
 
-  .hero__gallery-main,
-  .hero__gallery-side {
+  .hero__gallery-main {
+    min-height: 16rem;
+    height: auto;
     width: 100%;
-  }
-
-  .hero__gallery-side {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__headline {
-    font-size: 30px;
-    line-height: 1.2;
-  }
-
-  .hero__sub {
-    font-size: 16px;
-    line-height: 1.75;
+    max-width: 100%;
   }
 
   .hero__gallery-side {
     flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__gallery-side-top,
+  .hero__gallery-side-bottom {
+    min-height: 12rem;
+    height: auto;
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   Tablet Responsive Fixes (768px–1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-local-container {
+    width: calc(100% - 3rem) !important;
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+  }
+
+  .hero {
+    gap: 1.5rem;
+  }
+
+  .hero__content {
+    flex: 1.3;
+    max-width: 60%;
+  }
+
+  .hero__gallery {
+    flex: 1;
+    max-width: 45%;
+    gap: 1rem;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    margin-bottom: 1rem;
+    height: auto;
+  }
+
+  .hero__headline {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  .hero__sub {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .hero__ctas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .btn {
-    padding: 9px 16px;
-    font-size: 13px;
+    width: auto;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .btn--outline {
+    width: auto;
+    height: auto;
+  }
+
+  .hero__gallery-main,
+  .hero__gallery-side {
+    width: calc(50% - 0.5rem);
+    max-width: 100%;
+  }
+
+  .hero__gallery-main {
+    min-height: 16rem;
+    height: auto;
+  }
+
+  .hero__gallery-side {
+    gap: 1rem;
+  }
+
+  .hero__gallery-side-top,
+  .hero__gallery-side-bottom {
+    min-height: 7.5rem;
+    height: auto;
   }
 }
 
-/* Local Container Styles */
-.hero-local-container {
-	max-width: 1280px;
-	width: calc(100% - 160px);
-	margin-left: max(80px, calc((100% - 1280px) / 2));
-	margin-right: auto;
-	box-sizing: border-box;
-}
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .hero-local-container {
+    width: calc(100% - 80px) !important;
+    margin-left: max(40px, calc((100% - 1280px) / 2)) !important;
+    margin-right: auto !important;
+  }
 
-@media (max-width: 900px) {
-	.hero-local-container {
-		width: calc(100% - 48px);
-		margin-left: 24px;
-	}
-}
+  .hero {
+    gap: 3rem;
+  }
 
-@media (max-width: 480px) {
-	.hero-local-container {
-		width: calc(100% - 32px);
-		margin-left: 16px;
-	}
+  .hero__headline {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .hero__sub {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn--outline {
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+  }
+
+  .hero__ctas {
+    gap: 0.75rem;
+  }
+
+  .hero__gallery {
+    gap: 1rem;
+  }
+
+  .hero__gallery-main,
+  .hero__gallery-side {
+    width: calc(50% - 0.5rem);
+    max-width: 100%;
+  }
+
+  .hero__gallery-main {
+    min-height: 22rem;
+    height: auto;
+  }
+
+  .hero__gallery-side {
+    gap: 1rem;
+  }
+
+  .hero__gallery-side-top,
+  .hero__gallery-side-bottom {
+    min-height: 10.5rem;
+    height: auto;
+  }
 }

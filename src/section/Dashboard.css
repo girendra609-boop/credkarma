@@ -102,69 +102,121 @@
   display: block;
 }
 
-/* STACK when viewport can no longer fit 660 + 540 + gap + 160px gutters */
 
-@media (max-width: 1260px) {
-  .dashboard-impact-inner {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
 
-  .dashboard-impact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  .dashboard-impact-card,
-  .dashboard-impact-card--wide {
-    width: 100%;
-  }
 
-  .dashboard-impact-right,
-  .dashboard-impact-image-wrap {
-    width: 100%;
-    max-width: 540px;
-    margin: 0 auto;
-  }
-}
 
-/* MOBILE */
-
-@media (max-width: 900px) {
-  .dashboard-container {
-    width: calc(100% - 48px);
-    margin-left: 24px;
-  }
-}
-
-@media (max-width: 768px) {
+/* Tablet Responsive Fixes (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   .dashboard-impact-dashboard {
-    padding: 40px 0;
+    padding: 3rem auto;
   }
 
-  .dashboard-impact-grid {
-    grid-template-columns: 1fr;
+  .dashboard-container {
+    
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
-  .dashboard-impact-card--wide {
-    grid-column: auto;
+  .dashboard-impact-inner {
+    grid-template-columns: 2fr;
+    gap: 2rem;
   }
 
   .dashboard-impact-left h2 {
-    font-size: 32px;
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
   }
+.dashboard-impact-left{
+  margin-left:7rem;
+}
+  
 
   .dashboard-impact-image-wrap {
-    height: auto;
+    max-width: 540px;
+    margin: 0 auto;
   }
 
   .dashboard-impact-image-wrap img {
-    height: auto;
+    border-radius: 1.25rem;margin-left: 4rem;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 435px) {
+  .dashboard-impact-dashboard {
+    padding: 3rem 0;
+  }
+
   .dashboard-container {
-    width: calc(100% - 32px);
-    margin-left: 16px;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .dashboard-impact-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .dashboard-impact-left h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dashboard-impact-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .dashboard-impact-card {
+    height: auto;
+    min-height: 120px;
+    padding: 1.5rem;
+  }
+}
+
+/* =========================================================
+   Small Laptop Responsive Fixes (1024px–1439px)
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  /* Expand available space by shrinking container margins consistently with other sections */
+  .dashboard-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+  }
+
+  /* Prevent tight columns by shrinking the gap */
+  .dashboard-impact-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  /* Scale headline to fit properly without ugly wrapping */
+  .dashboard-impact-left h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Reduce grid gap slightly */
+  .dashboard-impact-grid {
+    gap: 1rem;
+  }
+
+  /* Let cards fluidly adjust height instead of rigid 144px */
+  .dashboard-impact-card {
+    height: auto;
+    min-height: 8rem;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .dashboard-impact-card--wide {
+    height: auto;
+    min-height: 8rem;
+  }
+
+  .dashboard-impact-card h3 {
+    font-size: 1.5rem;
   }
 }

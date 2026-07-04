@@ -20,7 +20,7 @@ const Corporate = () => {
           {/* Left Content */}
           <div className="corporate-content">
             <div className="corporate-badge">
-              <span>•</span> CORPORATE PAGE
+              CORPORATE PAGE
             </div>
 
             <h1 className="corporate-title">

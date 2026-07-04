@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+// const Home = React.lazy(() => import("./components/Home"));
 import Communities from "./section1/Commitypage";
 import Network from "./section2/Network";
 import Corporate from "./section3/Corporate";

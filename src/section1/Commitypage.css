@@ -22,8 +22,8 @@
 
 .community-tag {
   display: inline-block;
-  padding: 8px 16px;
-  height: 31px;
+  padding: 8px 27px;
+  height: 31px;width: fit-content;
   background:#DBEAFE;
   color: #1E3A8A;
   font-size: 12px;
@@ -102,33 +102,6 @@
   border-radius: 18px;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 992px) {
-  .community-section {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .community-left, .community-right {
-    max-width: 100%;
-  }
-
-  .community-left h2 {
-    font-size: 38px;
-  }
-}
-
-@media (max-width: 768px) {
-  .bottom-images {
-    grid-template-columns: 1fr;
-  }
-
-  .community-left h2 {
-    font-size: 32px;
-  }
-}
-
 /* Local Container Styles */
 .commity-local-container {
 	max-width: 1280px;
@@ -138,16 +111,139 @@
 	box-sizing: border-box;
 }
 
-@media (max-width: 900px) {
-	.commity-local-container {
-		width: calc(100% - 48px);
-		margin-left: 24px;
-	}
+
+/* Mobile Responsive Fixes (320px–425px) */
+@media (min-width: 320px) and (max-width: 435px) {
+  .commity-local-container {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .community-section {
+    flex-direction: column;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .community-left {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .community-tag {
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .community-left h2 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .community-left p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .community-right {
+    margin-top: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .bottom-images {
+    gap: 0.75rem;
+  }
 }
 
-@media (max-width: 480px) {
-	.commity-local-container {
-		width: calc(100% - 32px);
-		margin-left: 16px;
-	}
+/* =========================================================
+   Tablet Responsive Fixes (768px–1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .commity-local-container {
+    width: calc(100% - 3rem);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .community-section {
+    
+    padding-bottom: 4rem;
+    gap: 1.5rem;
+  }
+
+  .community-left {
+    max-width: 45%;
+  }
+
+  .community-right {
+    max-width: 55%;
+    margin-top: 2rem;
+  }
+
+  .community-left h2 {
+    font-size: 1.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .community-left p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .community-tag {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 6px 18px;
+    font-size: 0.7rem;
+  }
+
+  .community-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .bottom-images {
+    gap: 0.75rem;
+  }
+}
+
+/* Small Laptop Responsive Fixes (1024px–1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  /* Expand available width by shrinking container margins */
+  .commity-local-container {
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+  }
+
+  /* Shrink gap slightly to leave more room for both columns */
+  .community-section {
+    gap: 2rem;
+  }
+
+  /* Balance column widths so the left text doesn't hog the canvas */
+  .community-left {
+    max-width: 45%;
+  }
+
+  .community-right {
+    max-width: 55%;
+    margin-top: 40px;
+  }
+
+  /* Scale headline and paragraph down slightly to avoid awkward line wrapping */
+  .community-left h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .community-left p {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
 }
