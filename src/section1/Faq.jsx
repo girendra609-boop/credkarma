@@ -30,10 +30,14 @@ const faqData = [
 ];
 
 const Faq = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [openIndexes, setOpenIndexes] = useState([]);
 
   const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
   };
 
   return (
@@ -54,11 +58,11 @@ const Faq = () => {
               <span>{item.question}</span>
 
               <button className="faq-icon">
-                {activeIndex === index ? "−" : "+"}
+                {openIndexes.includes(index) ? "−" : "+"}
               </button>
             </div>
 
-            {activeIndex === index && (
+            {openIndexes.includes(index) && (
               <div className="faq-answer">
                 <p>{item.answer}</p>
               </div>

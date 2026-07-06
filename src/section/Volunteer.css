@@ -1,5 +1,13 @@
 /* VolunteerEcosystem.css */
 
+/* FIX: overflow-x hidden moved here so it protects ALL breakpoints,
+   not just the narrow 320-435px range. Prevents horizontal scroll
+   caused by absolutely positioned elements (badge/stat-bubble) on
+   any device width. */
+html, body {
+  overflow-x: hidden;
+}
+
 /* ---------- Layout ---------- */
 .ve-wrapper {
   display: flex;
@@ -33,7 +41,6 @@
   gap: 16px;
 }
 
-/* ---------- Image Grid ---------- */
 /* ---------- Image Grid ---------- */
 .ve-image-grid {
   display: grid;
@@ -427,13 +434,23 @@ box-shadow: 0px 4px 16px 0px #1A56DB59;
 }
 
 /* =========================================================
-   Mobile Responsive Fixes (320px - 425px)
-   ========================================================= */
-@media (min-width: 320px) and (max-width: 435px) {
-  body {
-    overflow-x: hidden;
-  }
+   Mobile Responsive Fixes (up to 767px)
 
+   FIX (Critical): original range was
+   "(min-width: 320px) and (max-width: 435px)" — this left a huge
+   uncovered gap from 436px to 767px where NONE of these mobile
+   styles applied. Any phone, phablet, or small tablet in that
+   range (very common) fell through to the desktop base styles,
+   breaking the layout (.ve-wrapper tries to lay out two
+   380px-flex-basis columns side by side in far less space).
+
+   Changed to a single "max-width: 767px" query — same values,
+   just applied across the full mobile range, and now lines up
+   with the 768px start of the tablet block above (no gap, no
+   overlap), matching the pattern used in your Navbar and Hero
+   CSS files.
+   ========================================================= */
+@media (max-width: 767px) {
   .volunteer-local-container {
     width: calc(100% - 2rem);
     margin: 0 auto;
@@ -537,5 +554,3 @@ box-shadow: 0px 4px 16px 0px #1A56DB59;
     grid-column: 1 / -1;
   }
 }
-
-

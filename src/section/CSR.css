@@ -1,3 +1,9 @@
+/* FIX: overflow-x hidden was missing from this file entirely.
+   Added globally to prevent horizontal scroll on any device width. */
+html, body {
+  overflow-x: hidden;
+}
+
 .csr-section {
   max-width: 1280px;
   width: calc(100% - 160px);
@@ -16,9 +22,16 @@
 padding: 0;
 }
 .csr-dashboard-img {
-  margin: 0 !important;width: 540px;;height: 485px;
+  /* FIX: cleaned up stray double-semicolon ("width: 540px;;height...")
+     and removed unnecessary !important on margin — nothing else in
+     this file targets .csr-dashboard-img's margin, so it was never
+     actually needed and just makes future overrides harder. */
+  margin: 0;
+  width: 540px;
+  height: 485px;
   border-radius: 28px;
-  border: 0.1px solid black;box-shadow: 0px 4px 16px 0px #0A16280F;
+  border: 0.1px solid black;
+  box-shadow: 0px 4px 16px 0px #0A16280F;
 
 box-shadow: 0px 24px 64px 0px #0A16281F;
 
@@ -108,7 +121,8 @@ box-shadow: 0px 24px 64px 0px #0A16281F;
   padding: 23px 28px;
 
   width: 100%;
-  max-width: 625px;height: 68px;
+  max-width: 625px;
+  height: 68px;
 
   background: #dbeafe;
   border-left: 4px solid #2563eb;text-align: left;
@@ -179,13 +193,28 @@ width: 300px;height: 52px;
   gap: 8px;margin-bottom: -20px;
 }
   .csr-callout {
+    /* FIX: added height: auto (was still inheriting the fixed 68px
+       from the base rule). At tablet width the callout column is much
+       narrower than the 625px it was designed for, so the bold 18px
+       text is far more likely to wrap to 2 lines — with a locked
+       68px height that wrapped text would get clipped/overflow. */
+    height: auto;
     padding: 1rem 0.5rem;
     font-size: 0.8rem;
   }
 }
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* =========================================================
+   Mobile Responsive Fixes (up to 767px)
+
+   FIX (Critical): original range was
+   "(min-width: 320px) and (max-width: 435px)" — same gap bug seen
+   in the other files. 436px–767px fell through to the desktop
+   grid (540px + 1fr columns), which would never fit on those
+   screens. Changed to "max-width: 767px" to close the gap and
+   line up with the 768px tablet block.
+   ========================================================= */
+@media (max-width: 767px) {
   .csr-section {
     width: calc(100% - 2rem);
     margin: 3rem auto;
@@ -203,13 +232,18 @@ width: 300px;height: 52px;
   }
 
   .csr-callout {
+    /* FIX: same reasoning as the tablet block above — the callout
+       is now full mobile width (much narrower than 625px), so the
+       text is very likely to wrap to 2-3 lines. Without height:auto
+       the fixed 68px would clip it. */
+    height: auto;
     padding: 1.25rem;
     font-size: 1rem;
   }
 
   .csr-btn {
     width: 100%;
-    padding: 1rem;
+    padding: 1rem;text-align: center;
     box-sizing: border-box;
   }
 }
@@ -252,4 +286,3 @@ width: 300px;height: 52px;
     margin-top: 1.5rem;
   }
 }
-

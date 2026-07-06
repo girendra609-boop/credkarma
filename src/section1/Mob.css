@@ -223,8 +223,8 @@
   }
 }
 
-/* Small Mobile (320px - 425px) */
-@media (max-width: 435px) {
+/* Mobile & Small-Tablet (0px – 767px) */
+@media (max-width: 767px) {
   .volunteerr-container {
     width: calc(100% - 32px);
     margin-left: 16px;

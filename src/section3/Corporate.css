@@ -134,7 +134,8 @@
 
   
  
-  @media (min-width: 320px) and (max-width: 435px) {
+  /* Mobile & Small-Tablet Responsive Fixes (0px–767px) */
+  @media (max-width: 767px) {
 
   .corporate-section {
     padding: 20px 16px;
@@ -288,7 +289,7 @@
 /* Tablet Responsive Fixes (768px–1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .corporate-section {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1.5rem;
   }
 .corporate-features
  {

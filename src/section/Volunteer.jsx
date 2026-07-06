@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import "./Volunteer.css";
 import vol1 from "../assets/vol1.png";
 import vol2 from "../assets/vol2.png";
@@ -21,7 +23,10 @@ const benefits = [
 
 export default function Volunteer() {
   const [activeCategory, setActiveCategory] = useState(null);
-
+  const { pathname } = useLocation();
+useEffect(()=>{
+  window.scrollTo({ top: 0, behavior: "smooth" });
+},[pathname])
   const getTagClass = (cat) => {
     return `ve-tag ${activeCategory === cat ? "ve-tag--active" : ""}`;
   };

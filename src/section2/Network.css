@@ -218,8 +218,8 @@
 
 
 
-/* Mobile Responsive (320px - 425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* Mobile & Small-Tablet Responsive (0px – 767px) */
+@media (max-width: 767px) {
   body {
     overflow-x: hidden;
   }
@@ -235,7 +235,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem; /* 24px */
-    padding: 2.5rem 1rem; /* 40px 16px */
+    
     box-sizing: border-box;
     padding-top: 6rem;
   }
@@ -277,7 +277,7 @@
 
   .network-btn {
     width: 100%;
-    max-width: 11.25rem; /* 180px */
+    max-width: 80%;margin-left: 2%;
     height: 2.75rem; /* 44px */
     border: none;
     border-radius: 624.9375rem; /* 9999px */

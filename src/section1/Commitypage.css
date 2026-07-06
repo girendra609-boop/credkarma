@@ -112,8 +112,8 @@
 }
 
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* Mobile & Small-Tablet Responsive Fixes (0px–767px) */
+@media (max-width: 767px) {
   .commity-local-container {
     width: calc(100% - 2rem);
     margin-left: 1rem;
@@ -171,7 +171,7 @@
   }
 
   .community-section {
-    
+    padding-top: 6rem;
     padding-bottom: 4rem;
     gap: 1.5rem;
   }

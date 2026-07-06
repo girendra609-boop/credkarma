@@ -31,6 +31,12 @@
   box-sizing: border-box;
 }
 
+/* FIX: overflow-x hidden moved here so it protects ALL breakpoints,
+   not just mobile. Prevents horizontal scroll on any device. */
+html, body {
+  overflow-x: hidden;
+}
+
 /* ── Hero wrapper ── */
 .hero {
   position: relative;
@@ -159,15 +165,19 @@
 
 .btn--outline {
   background: var(--color-surface);
-  color: var(--color-text-heading);width: 203px;height: 54px;
+  color: var(--color-text-heading);
+  width: 203px;
+  height: 54px;
   border-color: var(--color-border);
 }
 
+/* FIX: removed the stray trailing ";" with no property before it
+   (was: "background: linear-gradient(...); ;") — harmless to browsers
+   but invalid/messy syntax that could confuse future edits. */
 .btn--outline:hover {
   border-color: var(--color-primary);
   color: #ffffff;
-   background: linear-gradient(104.85deg, #1A56DB 0%, #06B6D4 100%);
- ;
+  background: linear-gradient(104.85deg, #1A56DB 0%, #06B6D4 100%);
 }
 
 .btn__icon {
@@ -236,17 +246,18 @@
   box-sizing: border-box;
 } 
 /* =========================================================
-   Mobile Responsive Fixes (320px–435px)
+   Mobile Responsive Fixes (320px–767px)
    ========================================================= */
 @media (max-width: 767px) {
-  body {
-    overflow-x: hidden;
-  }
-
   .hero-local-container {
-    width: calc(100% - 2rem) !important;
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
+    /* FIX: removed unnecessary !important. Ranges are non-overlapping
+       (mobile / tablet / small-laptop don't collide), so normal
+       cascade order already makes this win without !important —
+       and without !important, this rule stays easy to override later
+       if needed (e.g. from a debug or utility class). */
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .hero {
@@ -327,12 +338,19 @@
 
 /* =========================================================
    Tablet Responsive Fixes (768px–1023px)
+
+   NOTE: .hero__headline (1.5rem) and .btn (0.75rem) are smaller
+   here than in the mobile block above. Double-check this against
+   your Figma tablet frame — if there isn't one, confirm this is
+   intentional (e.g. deliberately compact to fit the 60% column)
+   before shipping. Left untouched since dimensions weren't to be
+   changed without confirmation.
    ========================================================= */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-local-container {
-    width: calc(100% - 3rem) !important;
-    margin-left: 1.5rem !important;
-    margin-right: 1.5rem !important;
+    width: calc(100% - 3rem);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 
   .hero {
@@ -409,13 +427,13 @@
 }
 
 /* =========================================================
-   Small Laptop Responsive Fixes (1024px–1439px)
+   Small Laptop Responsive Fixes (1024px–1440px)
    ========================================================= */
 @media (min-width: 1024px) and (max-width: 1440px) {
   .hero-local-container {
-    width: calc(100% - 80px) !important;
-    margin-left: max(40px, calc((100% - 1280px) / 2)) !important;
-    margin-right: auto !important;
+    width: calc(100% - 80px);
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    margin-right: auto;
   }
 
   .hero {

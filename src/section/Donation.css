@@ -1,3 +1,8 @@
+/* FIX: overflow-x hidden was missing from this file entirely.
+   Added globally to prevent horizontal scroll on any device width. */
+html, body {
+  overflow-x: hidden;
+}
 
 .donation-section {
   width: 100%;
@@ -158,7 +163,13 @@
 
 
 /* Tablet Responsive Fixes (768px–1023px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* FIX (Bug #2): was "max-width: 1024px" which overlapped with the
+     Small Laptop query below (which starts at "min-width: 1024px").
+     At exactly 1024px — a very common laptop resolution (1024x768) —
+     both queries fired at once and fought over which value wins.
+     Changed to 1023px so the handoff to Small Laptop at 1024px is
+     clean, with zero overlap. */
   .donation-section {
     padding: 4rem 0.1rem;
   }
@@ -194,8 +205,18 @@
   }
 }
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* =========================================================
+   Mobile Responsive Fixes (up to 767px)
+
+   FIX (Critical): original range was
+   "(min-width: 320px) and (max-width: 435px)" — same gap bug seen
+   across the other files in this project. 436px–767px fell through
+   to the desktop grid (1.05fr 1fr columns with a fixed 100px gap),
+   which would crush content badly on any phone/phablet/small tablet
+   in that range. Changed to "max-width: 767px" to close the gap and
+   line up exactly with the 768px tablet block above.
+   ========================================================= */
+@media (max-width: 767px) {
   .donation-section {
     padding: 3rem 0;
   }
@@ -273,4 +294,3 @@
     padding: 0.8rem 1.4rem;
   }
 }
-

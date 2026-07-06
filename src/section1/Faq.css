@@ -3,7 +3,8 @@
 .faq-section {
   background: #f7f8fa;
   padding: 72px 20px;
-  text-align: center;height: 666px;
+  text-align: center;
+  height: auto;
   font-family: "DM Sans";
 }
 
@@ -30,6 +31,10 @@
 
 .faq-item {
   border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
 }
 
 .faq-question {
@@ -74,14 +79,21 @@
    Tablet Specific Overrides (768px - 1023px)
    ========================================================= */
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* 
-   * Reason: Prevent horizontal scrolling which can occur during flexbox resizing.
-   */
-.faq-section {
+  .faq-section {
     padding: 2rem 9rem;
-  }
   }
   .faq-title {
     font-size: 32px;
   }
+}
+
+/* =========================================================
+   Mobile Specific Overrides (0px - 767px)
+   ========================================================= */
+@media (max-width: 767px) {
+  .faq-section {
+    height: auto;
+    padding: 40px 20px;
+  }
+}
 

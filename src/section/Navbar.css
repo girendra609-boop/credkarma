@@ -19,6 +19,7 @@ html, body {
 
   z-index: 9999;
   box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Semi-transparent dark overlay */
@@ -38,8 +39,7 @@ html, body {
   transition: all 0.3s ease;
 }
 
-/* FIX (Bug #2): Overlay had no "visible" state — add this so JS toggling
-   an "active" class on .nav-overlay actually shows the dark backdrop. */
+
 .nav-overlay.active {
   opacity: 1;
   visibility: visible;
@@ -194,10 +194,7 @@ html, body {
   display: block;
 }
 
-/* FIX (Bug #1): Removed "!important" from these two base rules.
-   With !important, the mobile media query below could NEVER override
-   them, so the close (X) button and mobile menu header would stay
-   hidden on every device, breaking the hamburger menu completely. */
+
 .mobile-menu-header {
   display: none;
 }
@@ -240,21 +237,7 @@ html, body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* =========================================================
-   FIX (Bug #3): Breakpoint ranges no longer overlap.
-   Old ranges: Tablet 768-1025 + Mobile <=900 + Laptop 1024-1439
-   overlapped at 768-900 and 1024-1025, causing conflicting rules
-   to fight each other (later rule silently won, breaking the
-   "tablet" look). New ranges are sequential with no overlap:
 
-   Mobile        : <= 900px
-   Tablet        : 901px - 1023px
-   Small Laptop  : 1024px - 1439px
-   ========================================================= */
-
-/* =========================================================
-   Tablet Specific Overrides (901px - 1023px)
-   ========================================================= */
 @media (min-width: 901px) and (max-width: 1023px) {
 
   .navbar-local-container {
@@ -309,24 +292,27 @@ html, body {
     z-index: 10001;
   }
 
+
   .nav-center {
     position: fixed;
-    border-radius: 8%;
+    border-radius: 10px;
     border: 1px solid #d3dae5;
     top: 0;
     right: -100%;
 
     width: 180px;
-    max-width: 85vw;
+    max-width: 73vw;
 
-    height: 55vh;
+    height: auto;
+    min-height: 180px;
+    padding-bottom: 40px;
 
     background: #ffffff;
 
     display: flex;
     flex-direction: column;
 
-    padding: 20px 35px;
+    padding: 35px 30px;
 
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
 
@@ -334,9 +320,18 @@ html, body {
 
     z-index: 10000;
 
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
+.nav-center {
+  scrollbar-width: none;    /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
 
+.nav-center::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari, Edge */
+}
   .nav-center.open {
     right: 0;
   }
@@ -345,7 +340,7 @@ html, body {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .close-menu {
@@ -367,10 +362,10 @@ html, body {
     align-items: center;
 
     width: 100%;
-    gap: 24px;
+    gap: 20px;
 
     margin: 0;
-    padding-top: 50px;
+    padding-top: 10px;
 
     list-style: none;
   }
@@ -395,10 +390,13 @@ html, body {
   .support-btn {
     width: auto;
     max-width: none;
-    margin-top: -1rem;
-    padding: 8px 14px;
-margin-top: 4px;
+    padding: 4px 14px;
     gap: 8px;
+  }
+
+  .btn-arrow {
+    width: 24px;
+    height: 24px;
   }
 
   .btn-text {
@@ -421,10 +419,15 @@ margin-top: 4px;
 }
 
 @media (max-width: 900px) {
+  .navbar {
+    min-height: 60px;
+    padding: 8px 20px;
+  }
+  
   .navbar-local-container {
     width: calc(100% - 48px);
     margin-left: 24px;
-    border-radius: 36px;
+    border-radius: 65px;
     box-sizing: border-box;
   }
 }
@@ -436,12 +439,24 @@ margin-top: 4px;
   }
 
   .navbar {
-    padding: 8px 12px;
-    min-height: 60px;
+    padding: 6px 12px;
+    min-height: 55px;
+  }
+  .hamburger {
+    margin-right: 0.5rem;
+    height: 16px;
+  }
+
+  .hamburger.open .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .hamburger.open .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .navimg {
-    min-width: 100px;
+    min-width: 140px;margin-top: -5px;
     width: 100px;
     padding: 0;
   }
@@ -449,7 +464,7 @@ margin-top: 4px;
   .support-btn {
     padding: 10px 20px;
     margin-right: -1.8rem;
-    gap: 10px;
+    gap: 10px;margin-top: -20px;
   }
 
   .btn-text {
@@ -460,6 +475,13 @@ margin-top: 4px;
     width: 24px;
     height: 24px;
     padding: 4px;
+  }
+}
+
+/* Hide navbar on scroll down (mobile only) */
+@media (max-width: 767px) {
+  .navbar-wrap.navbar-hidden {
+    transform: translateY(-150%);
   }
 }
 
@@ -488,12 +510,12 @@ margin-top: 4px;
   }
 }
 
-/* Default state for mobile support button inside hamburger menu */
+
 .mobile-support-btn-container {
   display: none;
 }
 
-/* Mobile specific styling for button in hamburger menu */
+
 @media (min-width: 320px) and (max-width: 435px) {
   .nav-right .support-btn {
     display: none;
@@ -507,5 +529,4 @@ margin-top: 4px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
-
 }

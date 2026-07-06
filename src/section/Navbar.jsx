@@ -6,10 +6,38 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const location = useLocation();
   const navigate = useNavigate();
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only apply this logic for mobile view (<= 767px)
+      if (window.innerWidth > 767) {
+        setIsVisible(true);
+        return;
+      }
+      
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Scrolling down and past 50px threshold
+        setIsVisible(false);
+      } else {
+        // Scrolling up
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -56,7 +84,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar-wrap">
+    <div className={`navbar-wrap ${!isVisible ? "navbar-hidden" : ""}`}>
       {/* Semi-transparent dark overlay */}
       <div
         className={`nav-overlay ${menuOpen ? "open" : ""}`}

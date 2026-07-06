@@ -1,5 +1,13 @@
 /* ─── CommunitiesNGO.css ─────────────────────────────────────────────────── */
 
+/* FIX: overflow-x hidden was missing from this file entirely.
+   Added globally so absolutely-positioned elements (e.g. .cng-card-badge)
+   or clamp()-based gaps can never trigger a horizontal scrollbar on
+   any device width. */
+html, body {
+  overflow-x: hidden;
+}
+
 /* Tokens */
 .cng-section {
   --cng-bg: #f0f4fb;
@@ -319,8 +327,20 @@
   
 }
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* =========================================================
+   Mobile Responsive Fixes (up to 767px)
+
+   FIX (Critical): original range was
+   "(min-width: 320px) and (max-width: 435px)" — same gap bug as
+   VolunteerEcosystem.css. Everything from 436px to 767px (many
+   phones/phablets/small tablets) fell through to the desktop
+   base styles, where .cng-container is a flex row expecting a
+   500px-wide left column — it would never fit and would break.
+
+   Changed to a single "max-width: 767px" query so it lines up
+   exactly with the 768px tablet block above — no gap, no overlap.
+   ========================================================= */
+@media (max-width: 767px) {
   .cng-section {
     padding: 2.5rem 0;
   }

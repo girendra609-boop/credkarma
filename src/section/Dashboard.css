@@ -110,13 +110,13 @@
 /* Tablet Responsive Fixes (768px–1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .dashboard-impact-dashboard {
-    padding: 3rem auto;
+    padding: 3rem 0;
   }
 
   .dashboard-container {
-    
-    margin-left: 2rem;
-    margin-right: 2rem;
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: auto;
   }
 
   .dashboard-impact-inner {
@@ -128,10 +128,6 @@
     font-size: 2.25rem;
     margin-bottom: 2rem;
   }
-.dashboard-impact-left{
-  margin-left:7rem;
-}
-  
 
   .dashboard-impact-image-wrap {
     max-width: 540px;
@@ -139,12 +135,12 @@
   }
 
   .dashboard-impact-image-wrap img {
-    border-radius: 1.25rem;margin-left: 4rem;
+    border-radius: 1.25rem;
   }
 }
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* Mobile & Small-Tablet Responsive Fixes (0px–767px) */
+@media (max-width: 767px) {
   .dashboard-impact-dashboard {
     padding: 3rem 0;
   }
@@ -210,7 +206,7 @@
     min-height: 8rem;
     padding: 1.25rem 1.5rem;
   }
-  
+
   .dashboard-impact-card--wide {
     height: auto;
     min-height: 8rem;

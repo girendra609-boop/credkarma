@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 8px;
   height: 376px;
 }
 
@@ -101,12 +100,11 @@
   }
 }
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 426px) {
+/* Mobile Responsive Fixes (0px–767px) */
+@media (max-width: 767px) {
   .post-requirement {
     height: auto;
     padding: 3rem 1.25rem;
-    margin-top: 70px;
   }
 
   .post-requirement__heading {

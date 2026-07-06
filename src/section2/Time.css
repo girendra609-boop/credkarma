@@ -305,10 +305,10 @@
   }
 }
 
-/* Mobile Responsive Fixes (320px–425px) */
-@media (min-width: 320px) and (max-width: 435px) {
+/* Mobile & Small-Tablet Responsive Fixes (0px–767px) */
+@media (max-width: 767px) {
   .time-section {
-    padding: 3rem 1rem;
+    padding: 3rem 0rem;
   }
 
   .time-container {

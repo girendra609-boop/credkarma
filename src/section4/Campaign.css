@@ -195,9 +195,9 @@
 }
 
 /* =========================================================
-   Mobile Responsive Fixes (320px - 425px)
+   Mobile & Small-Tablet Responsive Fixes (0px – 767px)
    ========================================================= */
-@media (min-width: 320px) and (max-width: 435px) {
+@media (max-width: 767px) {
   .campaign-section {
     padding: 3rem 1rem; /* Prevent 80px side padding from causing horizontal scroll */
   }

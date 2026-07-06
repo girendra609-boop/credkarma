@@ -1,9 +1,14 @@
+/* =========================================================
+   BASE STYLES (1440px+ / no media query)
+   ========================================================= */
+
 .simple-process {
   max-width: 1280px;
-  width: 100%;
-  /* margin: 0 auto centers the block; symmetric padding avoids scrollbar-driven shifts */
-  margin: 80px auto;
-  /* padding: 0 clamp(20px, 4vw, 80px); */
+  width: calc(100% - 160px);
+  margin-top: 80px;
+  margin-bottom: 80px;
+  margin-left: max(80px, calc((100% - 1280px) / 2));
+  margin-right: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -143,81 +148,116 @@
 
 /* =========================================================
    Small Laptop Responsive Fixes (1024px–1439px)
+   =========================================================
+   ANALYSIS NOTES:
+   • Previous rule used max-width: 1420px — this left a 19px gap
+     (1421px–1439px) where no small-laptop styles applied and the
+     component fell through to unqueried desktop base styles.
+     Fixed: upper bound corrected to 1439px.
+   • Tablet block ends at 1023px → this block starts at 1024px: ✅ no gap/overlap.
+   • This block ends at 1439px → desktop base styles take over at 1440px: ✅ no gap.
    ========================================================= */
 @media (min-width: 1024px) and (max-width: 1439px) {
   body {
     overflow-x: hidden;
   }
 
+  /*
+   * WHY: Base .simple-process uses width: calc(100% - 160px) and
+   * margin-left: max(80px, …) + margin-right: auto. At 1024px this means
+   * the container is calc(1024px - 160px) = 864px, leaving 80px left /
+   * 80px right — which is very tight. Reducing to calc(100% - 80px) and
+   * margin-left: max(40px, …) gives 40px gutters each side at 1024px,
+   * which is the same pattern used by the Navbar container at this breakpoint.
+   */
   .simple-process {
-    /* Match Navbar: width: calc(100% - 80px) = 40px each side */
     max-width: 1280px;
     width: calc(100% - 80px);
-    margin: 80px auto;
+    margin-top: 5rem;        /* 80px → rem for consistency */
+    margin-bottom: 5rem;
+    margin-left: max(40px, calc((100% - 1280px) / 2));
+    margin-right: auto;
     padding: 0;
-    gap: clamp(40px, 5vw, 80px);
+    gap: clamp(2rem, 5vw, 5rem); /* 40px–80px, scales with viewport */
+    align-items: center;
   }
 
-  /* .simple-process__left {
-    
-    flex: 0 0 48%;
-  }
+  /*
+   * WHY: Both columns are flex: 1 min-width: 0 so they share available
+   * width equally. No fixed-width override needed — fluid flex handles it.
+   * Keeping them as-is preserves the 50/50 split.
+   */
 
-  .simple-process__right {
-    
-    flex: 0 0 48%;
-  } */
-
+  /*
+   * WHY: Base font-size is 36px (2.25rem). At 1024px the left column is
+   * ~(864px / 2) = ~432px wide — heading will wrap at this size.
+   * Scaling to 2rem (32px) prevents unwanted wrapping and keeps one-line
+   * display consistent with the desktop design intent.
+   * line-height kept at 1.2 (same as desktop).
+   */
   .simple-process__heading {
-    /* Replace fixed 553px width with % to prevent horizontal overflow */
+    font-size: 2rem;          /* 36px → 32px; prevents wrapping in narrow column */
     width: 100%;
-    /* Use rem for font-size */
-    font-size: 2.25rem; /* 36px */
   }
 
+  /*
+   * WHY: max-width: 530px in base is wider than the left column at 1024px
+   * (~432px). Capping at 100% ensures it wraps within its parent instead
+   * of overflowing.
+   */
   .simple-process__subtext {
-    /* Remove fixed 530px max-width to allow fluid wrapping */
     max-width: 100%;
-    /* Use rem for font size */
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;      /* 14px — unchanged, just using rem unit */
+    margin-bottom: 2.5rem;    /* 42px → 40px; slightly tighter for small laptop */
   }
 
+  /*
+   * WHY: max-width: 580px in base is wider than the left column at 1024px.
+   * Setting to 100% lets it fill the column without overflowing.
+   */
   .simple-process__steps {
-    /* Replace fixed 580px max-width with % */
     width: 100%;
     max-width: 100%;
+  }
+
+  /*
+   * WHY: Circle is fixed 48×48px. No overflow issue — keeping as-is.
+   * Converting border and box-shadow to rem for visual consistency.
+   */
+  .simple-process__circle {
+    width: 3rem;              /* 48px */
+    height: 3rem;             /* 48px */
+    margin: 0 auto 0.875rem; /* 14px bottom margin → rem */
+    border-width: 0.1875rem;  /* 3px → rem */
+    box-shadow: 0 0 0 0.25rem #e2ebff; /* 4px → rem */
+    font-size: 0.875rem;      /* 14px → rem */
   }
 
   .simple-process__step-title {
-    /* Use rem for font-size */
-    font-size: 0.8125rem; /* 13px */
+    font-size: 0.8125rem;     /* 13px → rem */
   }
 
+  /*
+   * WHY: max-width: 150px in base clips the description inside the narrow
+   * steps container at this breakpoint. Setting to 100% allows the text
+   * to use the full step column width.
+   */
   .simple-process__step-desc {
-    /* Allow description to stretch up to 100% of the step container */
     max-width: 100%;
-    /* Use rem for font-size */
-    font-size: 0.8125rem; /* 13px */
+    font-size: 0.8125rem;     /* 13px → rem */
   }
 
-  .simple-process__circle {
-    /* Use rem for margin, border, box-shadow */
-    margin: 0 auto 0.875rem;
-    border-width: 0.1875rem;
-    box-shadow: 0 0 0 0.25rem #e2ebff;
-    /* Optional: can keep width/height fixed or rem, using rem here */
-    width: 3rem;
-    height: 3rem;
-    font-size: 0.875rem;
-  }
-
+  /*
+   * WHY: Image has max-width: 100% in base and flex: 1 on the parent
+   * — it will already scale to fit its column. Explicitly setting width:
+   * 100% makes it fill the right column fully on all small-laptop widths.
+   * height: auto prevents aspect-ratio distortion.
+   * border-radius converted to rem.
+   */
   .simple-process__image {
-    /* Remove fixed 576px width to prevent right-side overflow */
     width: 100%;
-    /* Remove fixed 480px height to prevent aspect ratio distortion */
     height: auto;
-    /* Use rem for border-radius */
-    border-radius: 1.375rem; /* 22px */
+    border-radius: 1.375rem;  /* 22px → rem */
   }
 }
 
@@ -233,7 +273,11 @@
   }
 
   .simple-process {
-    margin: 80px 24px;
+    width: calc(100% - 48px);
+    margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: 24px;
+    margin-right: auto;
   }
 
 
@@ -285,14 +329,17 @@
   }
 }
 
-/* MOBILE */
+/* MOBILE & SMALL TABLET (0px – 767px) */
 
-@media (max-width: 435px) {
+@media (max-width: 767px) {
   .simple-process {
     flex-direction: column;
     padding: 10px 0;
-    margin: 20px 16px;
-    width: auto;
+    width: calc(100% - 48px);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 24px;
+    margin-right: auto;
     gap: 30px;
   }
   
@@ -340,7 +387,7 @@
 
   .simple-process__step-text {
     display: flex;
-    flex-direction: column;margin-left: -5.2rem;margin-top: -5px;
+    flex-direction: column;
     gap: 4px;
     padding-top: 4px; /* Align text visually with the center of the circle */
   }
@@ -364,16 +411,26 @@
   }
 }
 
+@media (max-width: 480px) {
+  .simple-process {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: auto;
+  }
+}
+
 
 /* =========================================================
    Big Screen (1220px – 1440px)
    ========================================================= */
-@media (min-width: 1220px) and (max-width: 1440px) {
+/* @media  (max-width: 1440px) {
   .simple-process {
     max-width: 1280px;
-    width: 100%;
-    margin: 90px auto;
-    /* padding is already handled by the base clamp() rule — no override needed */
+    width: calc(100% - 160px);
+    margin-top: 90px;
+    margin-bottom: 90px;
+    margin-left: max(80px, calc((100% - 1280px) / 2));
+    margin-right: auto;
     gap: clamp(40px, 6vw, 90px);
     align-items: center;
   }
@@ -418,4 +475,4 @@
     border-radius: 22px;
     display: block;
   }
-}
+} */
